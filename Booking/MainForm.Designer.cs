@@ -40,13 +40,13 @@ namespace Booking
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.FilrtButton = new System.Windows.Forms.Button();
             this.HoletsPanel = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.FiltrPanel.SuspendLayout();
             this.HoletsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -154,6 +154,15 @@ namespace Booking
             this.HoletsPanel.Size = new System.Drawing.Size(962, 443);
             this.HoletsPanel.TabIndex = 1;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(800, 417);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(150, 17);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Все права защищены";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -163,6 +172,7 @@ namespace Booking
             this.label6.Size = new System.Drawing.Size(189, 25);
             this.label6.TabIndex = 5;
             this.label6.Text = "Гостиница \"Минск\"";
+            this.label6.Click += new System.EventHandler(this.label4_Click);
             // 
             // pictureBox3
             // 
@@ -173,6 +183,8 @@ namespace Booking
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 4;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Tag = "Гостиница \"Минск\"";
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label5
             // 
@@ -183,6 +195,7 @@ namespace Booking
             this.label5.Size = new System.Drawing.Size(188, 25);
             this.label5.TabIndex = 3;
             this.label5.Text = "Гостиница \"Венец\"";
+            this.label5.Click += new System.EventHandler(this.label4_Click);
             // 
             // pictureBox2
             // 
@@ -193,6 +206,8 @@ namespace Booking
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Tag = "Гостиница \"Венец\"";
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label4
             // 
@@ -214,16 +229,8 @@ namespace Booking
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Tag = "Гостиница \"Москва\"";
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(800, 417);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(150, 17);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Все права защищены";
             // 
             // MainForm
             // 
@@ -234,6 +241,7 @@ namespace Booking
             this.Controls.Add(this.FiltrPanel);
             this.Name = "MainForm";
             this.Text = "Главная";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.FiltrPanel.ResumeLayout(false);
             this.FiltrPanel.PerformLayout();
             this.HoletsPanel.ResumeLayout(false);

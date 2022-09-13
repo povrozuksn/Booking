@@ -32,14 +32,21 @@ namespace Booking
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            HotelForm hf = new HotelForm();
+            PictureBox pb = (PictureBox)sender;
+            HotelForm hf = new HotelForm(pb.Tag.ToString());
             hf.ShowDialog();
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
-            HotelForm hf = new HotelForm();
+            Label lb = (Label)sender;
+            HotelForm hf = new HotelForm(lb.Text);
             hf.ShowDialog();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
