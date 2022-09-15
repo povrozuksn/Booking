@@ -160,6 +160,7 @@ namespace Booking
             this.label4.Size = new System.Drawing.Size(210, 25);
             this.label4.TabIndex = 3;
             this.label4.Text = "Двухместный номер";
+            this.label4.Click += new System.EventHandler(this.label3_Click);
             // 
             // pictureBox7
             // 
@@ -170,6 +171,8 @@ namespace Booking
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox7.TabIndex = 2;
             this.pictureBox7.TabStop = false;
+            this.pictureBox7.Tag = "Двухместный номер";
+            this.pictureBox7.Click += new System.EventHandler(this.pictureBox6_Click);
             // 
             // label3
             // 
@@ -180,6 +183,7 @@ namespace Booking
             this.label3.Size = new System.Drawing.Size(213, 25);
             this.label3.TabIndex = 1;
             this.label3.Text = "Одноместный номер";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // pictureBox6
             // 
@@ -190,6 +194,7 @@ namespace Booking
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox6.TabIndex = 0;
             this.pictureBox6.TabStop = false;
+            this.pictureBox6.Tag = "Одноместный номер";
             this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
             // 
             // HotelForm

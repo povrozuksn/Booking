@@ -12,9 +12,13 @@ namespace Booking
 {
     public partial class RoomForm : Form
     {
-        public RoomForm()
+        public RoomForm(string HotelName, string RoomName)
         {
             InitializeComponent();
+
+            Text = HotelName + ": " + RoomName;
+            label1.Text = HotelName;
+            label3.Text = RoomName;
         }
 
         private void label3_Click(object sender, EventArgs e)

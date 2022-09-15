@@ -12,14 +12,17 @@ namespace Booking
 {
     public partial class HotelForm : Form
     {
+        public static string Hotel_Name;
+
         public HotelForm(string HotelName)
         {
             InitializeComponent();
 
             Text = HotelName;
             label1.Text = HotelName;
+            Hotel_Name = HotelName;
 
-            if(HotelName == "Гостиница \"Москва\"")
+            if (HotelName == "Гостиница \"Москва\"")
             {  
                 pictureBox1.Load("../../Pictures/Moskow.jpg");
             }
@@ -41,7 +44,15 @@ namespace Booking
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
-            RoomForm rf = new RoomForm();
+            PictureBox pb = (PictureBox)sender;
+            RoomForm rf = new RoomForm(Hotel_Name, pb.Tag.ToString());
+            rf.Show();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            Label lbl = (Label)sender;
+            RoomForm rf = new RoomForm(Hotel_Name, lbl.Text);
             rf.Show();
         }
     }
