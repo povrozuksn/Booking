@@ -12,10 +12,36 @@ namespace Booking
 {
     public partial class MainForm : Form
     {
+        public static List<Hotel> hotels = new List<Hotel>();
+
         public MainForm()
         {
             InitializeComponent();
+
+            string[] lines = System.IO.File.ReadAllLines("Гостиницы.txt");
+
+            foreach(string line in lines)
+            {
+                string[] parts = line.Split(new string[] { ", " }, StringSplitOptions.None);
+                Hotel hotel = new Hotel(parts[0], parts[1], Convert.ToInt32(parts[2]), parts[3]);
+                hotels.Add(hotel);
+            }
+
+            int x = 40;
+            foreach(Hotel hotel in hotels)
+            {
+                hotel.pb.Location = new Point(x, 30);
+                hotel.pb.Size = new Size(200, 180);
+                hotel.pb.Image = hotel.pb.Image;
+                hotel.pb.SizeMode = PictureBoxSizeMode.Zoom;
+                hotel.pb.Tag = hotel.Name;
+                hotel.pb.Click += new EventHandler(pictureBox1_Click);
+                HoletsPanel.Controls.Add(hotel.pb);
+
+                x += 220;
+            }
         }
+
 
         private void FilrtButton_Click(object sender, EventArgs e)
         {

@@ -10,6 +10,28 @@ using System.Windows.Forms;
 
 namespace Booking
 {
+    public struct Hotel
+    {
+        public string Name;
+        public string City;
+        public int Rating;
+        public string Picture_Adress;
+        public PictureBox pb;
+        public Label lbl;
+
+        public Hotel(string _Name, string _City, int _Rating, string _Adress)
+        {
+            Name = _Name;
+            City = _City;
+            Rating = _Rating;
+            Picture_Adress = _Adress;
+            pb = new PictureBox();
+            pb.Load("../../Pictures/" + _Adress);
+            lbl = new Label();
+        }
+    }
+
+
     public partial class HotelForm : Form
     {
         public static string Hotel_Name;
