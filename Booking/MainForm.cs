@@ -34,9 +34,15 @@ namespace Booking
                 hotel.pb.Size = new Size(200, 180);
                 hotel.pb.Image = hotel.pb.Image;
                 hotel.pb.SizeMode = PictureBoxSizeMode.Zoom;
-                hotel.pb.Tag = hotel.Name;
                 hotel.pb.Click += new EventHandler(pictureBox1_Click);
-                HoletsPanel.Controls.Add(hotel.pb);
+                HotelsPanel.Controls.Add(hotel.pb);
+
+                hotel.lbl.Location = new Point(x, 210);
+                hotel.lbl.Size = new Size(200, 30);
+                hotel.lbl.Font = new Font("Microsoft Sans Serif", 12);
+                hotel.lbl.Text = hotel.Name;
+                hotel.lbl.Click += new EventHandler(label4_Click);
+                HotelsPanel.Controls.Add(hotel.lbl);
 
                 x += 220;
             }
@@ -59,15 +65,27 @@ namespace Booking
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             PictureBox pb = (PictureBox)sender;
-            HotelForm hf = new HotelForm(pb.Tag.ToString());
-            hf.ShowDialog();
+            foreach(Hotel hotel in hotels)
+            {
+                if(hotel.pb.Image == pb.Image)
+                {
+                    HotelForm hf = new HotelForm(hotel);
+                    hf.ShowDialog();
+                }
+            }            
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
             Label lb = (Label)sender;
-            HotelForm hf = new HotelForm(lb.Text);
-            hf.ShowDialog();
+            foreach (Hotel hotel in hotels)
+            {
+                if (hotel.Name == lb.Text)
+                {
+                    HotelForm hf = new HotelForm(hotel);
+                    hf.ShowDialog();
+                }
+            }
         }
 
         private void MainForm_Load(object sender, EventArgs e)

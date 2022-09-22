@@ -36,27 +36,27 @@ namespace Booking
     {
         public static string Hotel_Name;
 
-        public HotelForm(string HotelName)
+        public HotelForm(Hotel hotel)
         {
             InitializeComponent();
 
-            Text = HotelName;
-            label1.Text = HotelName;
-            Hotel_Name = HotelName;
+            Text = hotel.Name;
+            label1.Text = hotel.Name;
+            Hotel_Name = hotel.Name;
+            pictureBox1.Image = hotel.pb.Image;
 
-            if (HotelName == "Гостиница \"Москва\"")
-            {  
-                pictureBox1.Load("../../Pictures/Moskow.jpg");
-            }
-            else if (HotelName == "Гостиница \"Венец\"")
+            int x = 380;
+            for(int i=0; i<hotel.Rating; i++)
             {
-                pictureBox1.Load("../../Pictures/Venec.jpg");
-            }
-            else if (HotelName == "Гостиница \"Минск\"")
-            {
-                pictureBox1.Load("../../Pictures/Minsk.jpg");
-            }
+                PictureBox box = new PictureBox();
+                box.Load("../../Pictures/star.jpg");
+                box.Location = new Point(x, 70);
+                box.Size = new Size(60, 60);
+                box.SizeMode = PictureBoxSizeMode.Zoom;
+                panel1.Controls.Add(box);
 
+                x += 65;
+            }
         }
 
         private void HotelForm_Load(object sender, EventArgs e)
