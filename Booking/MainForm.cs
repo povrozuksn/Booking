@@ -92,5 +92,20 @@ namespace Booking
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            foreach(Hotel hotel in hotels)
+            {
+                bool Visible = true;
+                if(CityComboBox.Text != "" && CityComboBox.Text != hotel.City)
+                {
+                    Visible = false;
+                }
+
+                hotel.pb.Visible = Visible;
+                hotel.lbl.Visible = Visible;
+            }
+        }
     }
 }
