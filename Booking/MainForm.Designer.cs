@@ -136,6 +136,7 @@ namespace Booking
             // 
             // HotelsPanel
             // 
+            this.HotelsPanel.AutoScroll = true;
             this.HotelsPanel.Controls.Add(this.label7);
             this.HotelsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.HotelsPanel.Location = new System.Drawing.Point(0, 144);

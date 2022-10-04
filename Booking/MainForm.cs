@@ -6,45 +6,62 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data;
+using MySql.Data.MySqlClient;
+using System.Data.Common;
 using System.Windows.Forms;
 
 namespace Booking
 {
     public partial class MainForm : Form
     {
+        const string CONNECTION_STRING =
+            "SslMode=none;Server=localhost;Database=booking;port=3306;Uid=root;";
+        
         public static List<Hotel> hotels = new List<Hotel>();
 
         public MainForm()
         {
             InitializeComponent();
 
-            string[] lines = System.IO.File.ReadAllLines("Гостиницы.txt");
+            MySqlConnection conn = new MySqlConnection(CONNECTION_STRING);
+            conn.Open();
 
-            foreach(string line in lines)
+            MySqlCommand cmd = new MySqlCommand("SELECT Name, City, Rating, Image FROM hotels ", conn);
+            DbDataReader reader = cmd.ExecuteReader();
+            while(reader.Read())
             {
-                string[] parts = line.Split(new string[] { ", " }, StringSplitOptions.None);
-                Hotel hotel = new Hotel(parts[0], parts[1], Convert.ToInt32(parts[2]), parts[3]);
+                string name = reader.GetValue(0).ToString();
+                string city = reader.GetValue(1).ToString();
+                string rating = reader.GetValue(2).ToString();
+                string image = reader.GetValue(3).ToString();
+
+                Hotel hotel = new Hotel(name, city, Convert.ToInt32(rating), image);
                 hotels.Add(hotel);
             }
+            reader.Close();
 
+            conn.Close();
+
+            
             int x = 40;
             foreach(Hotel hotel in hotels)
             {
                 hotel.pb.Location = new Point(x, 30);
-                hotel.pb.Size = new Size(200, 180);
+                hotel.pb.Size = new Size(250, 180);
                 hotel.pb.Image = hotel.pb.Image;
                 hotel.pb.SizeMode = PictureBoxSizeMode.Zoom;
                 hotel.pb.Click += new EventHandler(pictureBox1_Click);
                 HotelsPanel.Controls.Add(hotel.pb);
 
                 hotel.lbl.Location = new Point(x, 210);
-                hotel.lbl.Size = new Size(200, 30);
+                hotel.lbl.Size = new Size(250, 30);
                 hotel.lbl.Font = new Font("Microsoft Sans Serif", 12);
                 hotel.lbl.Text = hotel.Name;
                 hotel.lbl.Click += new EventHandler(label4_Click);
                 HotelsPanel.Controls.Add(hotel.lbl);
 
-                x += 220;
+                x += 260;
             }
         }
 

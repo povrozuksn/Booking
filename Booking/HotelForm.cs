@@ -26,7 +26,12 @@ namespace Booking
             Rating = _Rating;
             Picture_Adress = _Adress;
             pb = new PictureBox();
-            pb.Load("../../Pictures/" + _Adress);
+            try
+            {
+                pb.Load("../../Pictures/" + _Adress);
+            }
+            catch (Exception) { }
+
             lbl = new Label();
         }
     }
@@ -44,6 +49,7 @@ namespace Booking
             Text = hotel.Name;
             label1.Text = hotel.Name;
             Hotel_Name = hotel.Name;
+            Rating = hotel.Rating;
             pictureBox1.Image = hotel.pb.Image;
 
             int x = 360;

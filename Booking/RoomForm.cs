@@ -30,7 +30,7 @@ namespace Booking
                 pictureBox1.Load("../../Pictures/2seat.jpg");
             }
 
-            int x = 480;
+            int x = 360;
             for (int i = 0; i < Rating; i++)
             {
                 PictureBox box = new PictureBox();
@@ -43,7 +43,7 @@ namespace Booking
                 x += 55;
             }
 
-        }
+        }       
 
         private void button1_Click(object sender, EventArgs e)
         {
