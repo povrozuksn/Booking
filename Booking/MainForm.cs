@@ -15,35 +15,40 @@ namespace Booking
 {
     public partial class MainForm : Form
     {
-        const string CONNECTION_STRING =
-            "SslMode=none;Server=localhost;Database=booking;port=3306;Uid=root;";
-        
+       
         public static List<Hotel> hotels = new List<Hotel>();
+
+        public static List<string> MySelect(string cmdText)
+        {
+            List<string> list = new List<string>();
+
+            MySqlCommand cmd = new MySqlCommand(cmdText, Program.CONN);
+            DbDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                for(int i=0; i<reader.FieldCount;i++)
+                {
+                    list.Add(reader.GetValue(i).ToString());
+                }               
+            }
+            reader.Close();
+
+            return list;
+        }
 
         public MainForm()
         {
             InitializeComponent();
 
-            MySqlConnection conn = new MySqlConnection(CONNECTION_STRING);
-            conn.Open();
-
-            MySqlCommand cmd = new MySqlCommand("SELECT Name, City, Rating, Image FROM hotels ", conn);
-            DbDataReader reader = cmd.ExecuteReader();
-            while(reader.Read())
-            {
-                string name = reader.GetValue(0).ToString();
-                string city = reader.GetValue(1).ToString();
-                string rating = reader.GetValue(2).ToString();
-                string image = reader.GetValue(3).ToString();
-
-                Hotel hotel = new Hotel(name, city, Convert.ToInt32(rating), image);
+            List<string> otels = MySelect("SELECT Name, City, Rating, Image FROM hotels");
+            
+            for(int i=0; i< otels.Count; i+=4)
+            { 
+                Hotel hotel = new Hotel(otels[i], otels[i+1], Convert.ToInt32(otels[i+2]), otels[i+3]);
                 hotels.Add(hotel);
             }
-            reader.Close();
+           
 
-            conn.Close();
-
-            
             int x = 40;
             foreach(Hotel hotel in hotels)
             {
