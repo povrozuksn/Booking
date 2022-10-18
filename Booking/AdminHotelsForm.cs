@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using System.Data.Common;
 
 namespace Booking
 {
@@ -37,8 +38,8 @@ namespace Booking
         {
             MySqlCommand cmd = new MySqlCommand("INSERT INTO hotels (Name, City, Rating, Image, Adress)"+
                                                 "VALUES('"+ textBox1.Text +"', '"+ textBox2.Text + "', '"+ textBox3.Text + "', '"+ adress + "', '"+ textBox4.Text + "')", Program.CONN);
-            cmd.ExecuteReader();
-            cmd.Dispose();
+            DbDataReader reader = cmd.ExecuteReader();
+            reader.Close();
             MessageBox.Show("Сохранено");
         }
 
@@ -47,8 +48,8 @@ namespace Booking
             List<string> list = MainForm.MySelect("SELECT Name, City, Rating, Image, Adress FROM hotels");
 
             panel1.Controls.Clear();
-            int y = 30;
-            for (int i=0; i<list.Count;i+=5)
+            int y = 10;
+            for (int i=0; i<list.Count; i+=5)
             {
                 Label lbl = new Label();
                 lbl.Location = new Point(50, y);
@@ -61,7 +62,7 @@ namespace Booking
                 btn.Location = new Point(350, y);
                 btn.Size = new Size(100, 30);
                 btn.Font = new Font("Microsoft Sans Serif", 12);
-                btn.Click += new EventHandler(DeletHotelClick);
+                btn.Click += new EventHandler(DeleteHotelClick);
                 btn.Text = "Удалить";
                 panel1.Controls.Add(btn);
 
@@ -69,7 +70,7 @@ namespace Booking
             }
         }
 
-        private void DeletHotelClick(object sender, EventArgs e)
+        private void DeleteHotelClick(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
             int y = btn.Location.Y;
@@ -80,9 +81,11 @@ namespace Booking
                 {
                     MySqlCommand cmd = new MySqlCommand(
                     "DELETE FROM hotels WHERE Name = '" + control.Text + "'", Program.CONN);
-                    cmd.ExecuteReader();
-                    cmd.Dispose();
+                    DbDataReader reader = cmd.ExecuteReader();
+                    reader.Close();
                     MessageBox.Show("Удалено");
+                    AdminHotelsForm_Load(sender, e);
+                    return;
                 }
             }
         }
