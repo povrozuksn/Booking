@@ -40,12 +40,14 @@ namespace Booking
             this.FilrtButton = new System.Windows.Forms.Button();
             this.HotelsPanel = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.FiltrPanel.SuspendLayout();
             this.HotelsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // FiltrPanel
             // 
+            this.FiltrPanel.Controls.Add(this.button2);
             this.FiltrPanel.Controls.Add(this.button1);
             this.FiltrPanel.Controls.Add(this.dateTimePicker2);
             this.FiltrPanel.Controls.Add(this.label3);
@@ -58,7 +60,7 @@ namespace Booking
             this.FiltrPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FiltrPanel.Location = new System.Drawing.Point(0, 0);
             this.FiltrPanel.Name = "FiltrPanel";
-            this.FiltrPanel.Size = new System.Drawing.Size(962, 144);
+            this.FiltrPanel.Size = new System.Drawing.Size(1494, 144);
             this.FiltrPanel.TabIndex = 0;
             // 
             // button1
@@ -141,7 +143,7 @@ namespace Booking
             this.HotelsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.HotelsPanel.Location = new System.Drawing.Point(0, 144);
             this.HotelsPanel.Name = "HotelsPanel";
-            this.HotelsPanel.Size = new System.Drawing.Size(962, 443);
+            this.HotelsPanel.Size = new System.Drawing.Size(1494, 443);
             this.HotelsPanel.TabIndex = 1;
             // 
             // label7
@@ -154,11 +156,21 @@ namespace Booking
             this.label7.TabIndex = 6;
             this.label7.Text = "Все права защищены";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(160, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(230, 33);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Админка";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(962, 587);
+            this.ClientSize = new System.Drawing.Size(1494, 587);
             this.Controls.Add(this.HotelsPanel);
             this.Controls.Add(this.FiltrPanel);
             this.Name = "MainForm";
@@ -185,6 +197,7 @@ namespace Booking
         private System.Windows.Forms.ComboBox CityComboBox;
         private System.Windows.Forms.Panel HotelsPanel;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button2;
     }
 }
 

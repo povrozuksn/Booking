@@ -42,27 +42,34 @@ namespace Booking
         public static string Hotel_Name;
         public static int Rating;
 
-        public HotelForm(Hotel hotel)
+        public HotelForm(string hotel_name)
         {
             InitializeComponent();
 
-            Text = hotel.Name;
-            label1.Text = hotel.Name;
-            Hotel_Name = hotel.Name;
-            Rating = hotel.Rating;
-            pictureBox1.Image = hotel.pb.Image;
+            List<string> otel = MainForm.MySelect("SELECT Name, City, Rating, Image, Adress FROM hotels WHERE Name = '" + hotel_name + "'");
+
+            Text = otel[0];
+            label1.Text = otel[0];
+            Hotel_Name = otel[0];
+            Rating = Convert.ToInt32(otel[2]);
+            try
+            {
+                pictureBox1.Load("../../Pictures/" + otel[3]);
+            }
+            catch (Exception) { };
+            label5.Text = otel[4];
 
             int x = 360;
-            for(int i=0; i<hotel.Rating; i++)
+            for(int i=0; i<Rating; i++)
             {
                 PictureBox box = new PictureBox();
-                box.Load("../../Pictures/star.jpg");
+                box.Load("../../Pictures/star.png");
                 box.Location = new Point(x, 60);
-                box.Size = new Size(50, 50);
+                box.Size = new Size(40, 40);
                 box.SizeMode = PictureBoxSizeMode.Zoom;
                 panel1.Controls.Add(box);
 
-                x += 55;
+                x += 43;
             }
         }
 

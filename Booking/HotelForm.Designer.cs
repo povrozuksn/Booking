@@ -39,6 +39,7 @@ namespace Booking
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -48,13 +49,14 @@ namespace Booking
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(850, 300);
+            this.panel1.Size = new System.Drawing.Size(1103, 300);
             this.panel1.TabIndex = 0;
             // 
             // label2
@@ -63,9 +65,9 @@ namespace Booking
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(474, 185);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(328, 50);
+            this.label2.Size = new System.Drawing.Size(75, 25);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Адрес:\r\nг. Москва, ул. Охотный Ряд, дом 2";
+            this.label2.Text = "Адрес:";
             // 
             // label1
             // 
@@ -96,7 +98,7 @@ namespace Booking
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 300);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(850, 310);
+            this.panel2.Size = new System.Drawing.Size(1103, 310);
             this.panel2.TabIndex = 1;
             // 
             // label4
@@ -145,11 +147,20 @@ namespace Booking
             this.pictureBox6.Tag = "Одноместный номер";
             this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(476, 223);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(46, 17);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "label5";
+            // 
             // HotelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(850, 610);
+            this.ClientSize = new System.Drawing.Size(1103, 610);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "HotelForm";
@@ -177,5 +188,6 @@ namespace Booking
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -91,7 +91,7 @@ namespace Booking
             {
                 if(hotel.pb.Image == pb.Image)
                 {
-                    HotelForm hf = new HotelForm(hotel);
+                    HotelForm hf = new HotelForm(hotel.Name);
                     hf.ShowDialog();
                 }
             }            
@@ -104,7 +104,7 @@ namespace Booking
             {
                 if (hotel.Name == lb.Text)
                 {
-                    HotelForm hf = new HotelForm(hotel);
+                    HotelForm hf = new HotelForm(hotel.Name);
                     hf.ShowDialog();
                 }
             }
@@ -128,6 +128,12 @@ namespace Booking
                 hotel.pb.Visible = Visible;
                 hotel.lbl.Visible = Visible;
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AdminForm adminForm = new AdminForm();
+            adminForm.Show();
         }
     }
 }

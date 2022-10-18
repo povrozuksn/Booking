@@ -12,3 +12,5 @@ C:\Users\root\source\repos\Booking\Booking\obj\Debug\Booking.HotelForm.resources
 C:\Users\root\source\repos\Booking\Booking\obj\Debug\Booking.RoomForm.resources
 C:\Users\root\source\repos\Booking\Booking\bin\Debug\MySql.Data.dll
 C:\Users\root\source\repos\Booking\Booking\obj\Debug\Booking.csproj.CopyComplete
+C:\Users\root\source\repos\Booking\Booking\obj\Debug\Booking.AdminForm.resources
+C:\Users\root\source\repos\Booking\Booking\obj\Debug\Booking.AdminHotelsForm.resources
