@@ -31,35 +31,45 @@ namespace Booking
             {
                 adress = openFileDialog1.FileName;
                 pictureBox1.Load(adress);
+                System.IO.File.Copy(adress, "../../Pictures/" + System.IO.Path.GetFileName(adress));
+                adress = System.IO.Path.GetFileName(adress);
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MySqlCommand cmd = new MySqlCommand("INSERT INTO hotels (Name, City, Rating, Image, Adress)"+
-                                                "VALUES('"+ textBox1.Text +"', '"+ textBox2.Text + "', '"+ textBox3.Text + "', '"+ adress + "', '"+ textBox4.Text + "')", Program.CONN);
-            DbDataReader reader = cmd.ExecuteReader();
-            reader.Close();
+            MainForm.MyUpdate("INSERT INTO hotels (Name, City, Rating, Image, Adress)"+
+                              "VALUES('"+ textBox1.Text +"', '"+ textBox2.Text + "', '"+ textBox3.Text + "', '"+ adress + "', '"+ textBox4.Text + "')");
+            
             MessageBox.Show("Сохранено");
+            AdminHotelsForm_Load(sender, e);
+            return;
         }
 
         private void AdminHotelsForm_Load(object sender, EventArgs e)
         {
-            List<string> list = MainForm.MySelect("SELECT Name, City, Rating, Image, Adress FROM hotels");
+            List<string> list = MainForm.MySelect("SELECT Name, City, Rating, Image, Adress, ID FROM hotels");
 
             panel1.Controls.Clear();
             int y = 10;
-            for (int i=0; i<list.Count; i+=5)
+            for (int i=0; i<list.Count; i+=6)
             {
-                Label lbl = new Label();
-                lbl.Location = new Point(50, y);
-                lbl.Size = new Size(250, 30);
-                lbl.Font = new Font("Microsoft Sans Serif", 12);
-                lbl.Text = list[i];
-                panel1.Controls.Add(lbl);
+                Label lbl0 = new Label();
+                lbl0.Location = new Point(50, y);
+                lbl0.Size = new Size(250, 30);
+                lbl0.Font = new Font("Microsoft Sans Serif", 12);
+                lbl0.Text = list[i];
+                panel1.Controls.Add(lbl0);
+                
+                Label lbl1 = new Label();
+                lbl1.Location = new Point(300, y);
+                lbl1.Size = new Size(200, 30);
+                lbl1.Font = new Font("Microsoft Sans Serif", 12);
+                lbl1.Text = list[i+1];
+                panel1.Controls.Add(lbl1);                
 
                 Button btn = new Button();
-                btn.Location = new Point(350, y);
+                btn.Location = new Point(500, y);
                 btn.Size = new Size(100, 30);
                 btn.Font = new Font("Microsoft Sans Serif", 12);
                 btn.Click += new EventHandler(DeleteHotelClick);
@@ -79,11 +89,7 @@ namespace Booking
             {
                 if(control.Location == new Point(50, y))
                 {
-                    MySqlCommand cmd = new MySqlCommand(
-                    "DELETE FROM hotels WHERE Name = '" + control.Text + "'", Program.CONN);
-                    DbDataReader reader = cmd.ExecuteReader();
-                    reader.Close();
-                    MessageBox.Show("Удалено");
+                    MainForm.MyUpdate("DELETE FROM hotels WHERE Name = '" + control.Text + "'");                    
                     AdminHotelsForm_Load(sender, e);
                     return;
                 }

@@ -44,6 +44,7 @@ namespace Booking
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -51,9 +52,9 @@ namespace Booking
             // panel1
             // 
             this.panel1.AutoScroll = true;
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(12, 31);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(861, 245);
+            this.panel1.Size = new System.Drawing.Size(861, 263);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -70,7 +71,7 @@ namespace Booking
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(12, 276);
+            this.panel2.Location = new System.Drawing.Point(12, 302);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(861, 278);
             this.panel2.TabIndex = 1;
@@ -194,11 +195,22 @@ namespace Booking
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(19, 3);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(191, 25);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Удалить гостиницу";
+            // 
             // AdminHotelsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(885, 566);
+            this.ClientSize = new System.Drawing.Size(885, 589);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "AdminHotelsForm";
@@ -208,6 +220,7 @@ namespace Booking
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -228,5 +241,6 @@ namespace Booking
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label label5;
     }
 }

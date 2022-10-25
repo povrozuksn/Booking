@@ -17,7 +17,9 @@ namespace Booking
     {
        
         public static List<Hotel> hotels = new List<Hotel>();
-
+        /// <summary>
+        /// Функция Select-запроса
+        /// </summary>
         public static List<string> MySelect(string cmdText)
         {
             List<string> list = new List<string>();
@@ -34,6 +36,16 @@ namespace Booking
             reader.Close();
 
             return list;
+        }
+
+        /// <summary>
+        /// Функция Update/Insert/Delete - запроса
+        /// </summary>
+        public static void MyUpdate(string cmdText)
+        {
+            MySqlCommand cmd = new MySqlCommand(cmdText, Program.CONN);
+            DbDataReader reader = cmd.ExecuteReader();
+            reader.Close();
         }
 
         public MainForm()
