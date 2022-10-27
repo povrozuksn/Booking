@@ -15,7 +15,8 @@ namespace Booking
 {
     public partial class MainForm : Form
     {
-       
+        public static string Login = "";
+
         public static List<Hotel> hotels = new List<Hotel>();
         /// <summary>
         /// Функция Select-запроса
@@ -146,6 +147,19 @@ namespace Booking
         {
             AdminForm adminForm = new AdminForm();
             adminForm.Show();
+        }
+
+        private void AuthButton_Click(object sender, EventArgs e)
+        {
+            List<string> user_data = MainForm.MySelect("SELECT Login FROM users WHERE Login = '"+ LoginTextBox.Text +"'");
+            
+            if(user_data.Count>0)
+            {
+                Login = user_data[0];
+                AuthPanel.Controls.Clear();
+
+            }
+
         }
     }
 }

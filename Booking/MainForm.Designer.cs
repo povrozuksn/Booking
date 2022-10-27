@@ -30,7 +30,7 @@ namespace Booking
         private void InitializeComponent()
         {
             this.FiltrPanel = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.AdminPanelButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,13 +41,19 @@ namespace Booking
             this.FilrtButton = new System.Windows.Forms.Button();
             this.HotelsPanel = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
+            this.AuthPanel = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.LoginTextBox = new System.Windows.Forms.TextBox();
+            this.PaswTextBox = new System.Windows.Forms.TextBox();
+            this.AuthButton = new System.Windows.Forms.Button();
             this.FiltrPanel.SuspendLayout();
             this.HotelsPanel.SuspendLayout();
+            this.AuthPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // FiltrPanel
             // 
-            this.FiltrPanel.Controls.Add(this.button2);
             this.FiltrPanel.Controls.Add(this.button1);
             this.FiltrPanel.Controls.Add(this.dateTimePicker2);
             this.FiltrPanel.Controls.Add(this.label3);
@@ -56,22 +62,22 @@ namespace Booking
             this.FiltrPanel.Controls.Add(this.dateTimePicker1);
             this.FiltrPanel.Controls.Add(this.CityComboBox);
             this.FiltrPanel.Controls.Add(this.FilrtButton);
-            this.FiltrPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.FiltrPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.FiltrPanel.Location = new System.Drawing.Point(0, 0);
+            this.FiltrPanel.Location = new System.Drawing.Point(3, 60);
             this.FiltrPanel.Name = "FiltrPanel";
-            this.FiltrPanel.Size = new System.Drawing.Size(1494, 144);
+            this.FiltrPanel.Size = new System.Drawing.Size(1494, 185);
             this.FiltrPanel.TabIndex = 0;
             // 
-            // button2
+            // AdminPanelButton
             // 
-            this.button2.Location = new System.Drawing.Point(160, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(230, 33);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Админка";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.AdminPanelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AdminPanelButton.Location = new System.Drawing.Point(1023, 12);
+            this.AdminPanelButton.Name = "AdminPanelButton";
+            this.AdminPanelButton.Size = new System.Drawing.Size(296, 33);
+            this.AdminPanelButton.TabIndex = 8;
+            this.AdminPanelButton.Text = "Панель администратора";
+            this.AdminPanelButton.UseVisualStyleBackColor = true;
+            this.AdminPanelButton.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -150,27 +156,89 @@ namespace Booking
             // 
             this.HotelsPanel.AutoScroll = true;
             this.HotelsPanel.Controls.Add(this.label7);
-            this.HotelsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.HotelsPanel.Location = new System.Drawing.Point(0, 144);
+            this.HotelsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.HotelsPanel.Location = new System.Drawing.Point(0, 251);
             this.HotelsPanel.Name = "HotelsPanel";
-            this.HotelsPanel.Size = new System.Drawing.Size(1494, 443);
+            this.HotelsPanel.Size = new System.Drawing.Size(1494, 427);
             this.HotelsPanel.TabIndex = 1;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label7.Location = new System.Drawing.Point(0, 426);
+            this.label7.Location = new System.Drawing.Point(0, 410);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(150, 17);
             this.label7.TabIndex = 6;
             this.label7.Text = "Все права защищены";
             // 
+            // AuthPanel
+            // 
+            this.AuthPanel.Controls.Add(this.AuthButton);
+            this.AuthPanel.Controls.Add(this.PaswTextBox);
+            this.AuthPanel.Controls.Add(this.LoginTextBox);
+            this.AuthPanel.Controls.Add(this.label5);
+            this.AuthPanel.Controls.Add(this.label4);
+            this.AuthPanel.Controls.Add(this.AdminPanelButton);
+            this.AuthPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.AuthPanel.Location = new System.Drawing.Point(0, 0);
+            this.AuthPanel.Name = "AuthPanel";
+            this.AuthPanel.Size = new System.Drawing.Size(1494, 54);
+            this.AuthPanel.TabIndex = 9;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(12, 12);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(149, 25);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Введите логин";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(422, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(161, 25);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Введите пароль";
+            // 
+            // LoginTextBox
+            // 
+            this.LoginTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LoginTextBox.Location = new System.Drawing.Point(182, 12);
+            this.LoginTextBox.Name = "LoginTextBox";
+            this.LoginTextBox.Size = new System.Drawing.Size(221, 30);
+            this.LoginTextBox.TabIndex = 11;
+            // 
+            // PaswTextBox
+            // 
+            this.PaswTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PaswTextBox.Location = new System.Drawing.Point(613, 13);
+            this.PaswTextBox.Name = "PaswTextBox";
+            this.PaswTextBox.Size = new System.Drawing.Size(221, 30);
+            this.PaswTextBox.TabIndex = 12;
+            // 
+            // AuthButton
+            // 
+            this.AuthButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AuthButton.Location = new System.Drawing.Point(859, 12);
+            this.AuthButton.Name = "AuthButton";
+            this.AuthButton.Size = new System.Drawing.Size(111, 32);
+            this.AuthButton.TabIndex = 13;
+            this.AuthButton.Text = "Войти";
+            this.AuthButton.UseVisualStyleBackColor = true;
+            this.AuthButton.Click += new System.EventHandler(this.AuthButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1494, 587);
+            this.ClientSize = new System.Drawing.Size(1494, 678);
+            this.Controls.Add(this.AuthPanel);
             this.Controls.Add(this.HotelsPanel);
             this.Controls.Add(this.FiltrPanel);
             this.Name = "MainForm";
@@ -180,6 +248,8 @@ namespace Booking
             this.FiltrPanel.PerformLayout();
             this.HotelsPanel.ResumeLayout(false);
             this.HotelsPanel.PerformLayout();
+            this.AuthPanel.ResumeLayout(false);
+            this.AuthPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -197,7 +267,13 @@ namespace Booking
         private System.Windows.Forms.ComboBox CityComboBox;
         private System.Windows.Forms.Panel HotelsPanel;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button AdminPanelButton;
+        private System.Windows.Forms.Panel AuthPanel;
+        private System.Windows.Forms.Button AuthButton;
+        private System.Windows.Forms.TextBox PaswTextBox;
+        private System.Windows.Forms.TextBox LoginTextBox;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
     }
 }
 

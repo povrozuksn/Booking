@@ -15,12 +15,23 @@ namespace Booking
         public AdminRoomsForm()
         {
             InitializeComponent();
+
+            List<string> hotels_list = MainForm.MySelect("SELECT Name, City, ID FROM hotels");
+
+            comboBox1.Items.Clear();
+            for(int i=0; i<hotels_list.Count; i+=3)
+            {
+                comboBox1.Items.Add(hotels_list[i]+ "," + hotels_list[i+1] + "," + hotels_list[i+2]);
+            }
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MainForm.MyUpdate("INSERT INTO rooms (Name, Price, Name_hotel, City)" +
-                              "VALUES('" + textBox1.Text + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox4.Text + "')");
+            string[] parts = comboBox1.Text.Split(new char[] { ',' });
+            
+            MainForm.MyUpdate("INSERT INTO rooms (Name, Price, Name_hotel, City, Hotel_id)" +
+                              "VALUES('" + textBox1.Text + "', '" + textBox2.Text + "', '" + parts[0] + "', '" + parts[1] + "', '" + parts[2] + "')");
 
             MessageBox.Show("Сохранено");
             AdminRoomsForm_Load(sender, e);
@@ -52,20 +63,20 @@ namespace Booking
 
                 Label lbl2 = new Label();
                 lbl2.Location = new Point(280, y);
-                lbl2.Size = new Size(200, 30);
+                lbl2.Size = new Size(250, 30);
                 lbl2.Font = new Font("Microsoft Sans Serif", 12);
                 lbl2.Text = list[i + 2];
                 panel1.Controls.Add(lbl2);
 
                 Label lbl3 = new Label();
-                lbl3.Location = new Point(485, y);
+                lbl3.Location = new Point(535, y);
                 lbl3.Size = new Size(200, 30);
                 lbl3.Font = new Font("Microsoft Sans Serif", 12);
                 lbl3.Text = list[i + 3];
                 panel1.Controls.Add(lbl3);
 
                 Button btn = new Button();
-                btn.Location = new Point(690, y);
+                btn.Location = new Point(740, y);
                 btn.Size = new Size(100, 30);
                 btn.Font = new Font("Microsoft Sans Serif", 12);
                 btn.Click += new EventHandler(DeleteHotelClick);
