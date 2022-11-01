@@ -15,3 +15,4 @@ C:\Users\root\source\repos\Booking\Booking\obj\Debug\Booking.csproj.CopyComplete
 C:\Users\root\source\repos\Booking\Booking\obj\Debug\Booking.AdminForm.resources
 C:\Users\root\source\repos\Booking\Booking\obj\Debug\Booking.AdminHotelsForm.resources
 C:\Users\root\source\repos\Booking\Booking\obj\Debug\Booking.AdminRoomsForm.resources
+C:\Users\root\source\repos\Booking\Booking\obj\Debug\Booking.RegForm.resources

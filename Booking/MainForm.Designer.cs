@@ -30,7 +30,6 @@ namespace Booking
         private void InitializeComponent()
         {
             this.FiltrPanel = new System.Windows.Forms.Panel();
-            this.AdminPanelButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,14 +38,16 @@ namespace Booking
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.CityComboBox = new System.Windows.Forms.ComboBox();
             this.FilrtButton = new System.Windows.Forms.Button();
+            this.AdminPanelButton = new System.Windows.Forms.Button();
             this.HotelsPanel = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.AuthPanel = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.HelloLabel = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.AuthButton = new System.Windows.Forms.Button();
             this.LoginTextBox = new System.Windows.Forms.TextBox();
             this.PaswTextBox = new System.Windows.Forms.TextBox();
-            this.AuthButton = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.FiltrPanel.SuspendLayout();
             this.HotelsPanel.SuspendLayout();
             this.AuthPanel.SuspendLayout();
@@ -67,17 +68,6 @@ namespace Booking
             this.FiltrPanel.Name = "FiltrPanel";
             this.FiltrPanel.Size = new System.Drawing.Size(1494, 185);
             this.FiltrPanel.TabIndex = 0;
-            // 
-            // AdminPanelButton
-            // 
-            this.AdminPanelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AdminPanelButton.Location = new System.Drawing.Point(1023, 12);
-            this.AdminPanelButton.Name = "AdminPanelButton";
-            this.AdminPanelButton.Size = new System.Drawing.Size(296, 33);
-            this.AdminPanelButton.TabIndex = 8;
-            this.AdminPanelButton.Text = "Панель администратора";
-            this.AdminPanelButton.UseVisualStyleBackColor = true;
-            this.AdminPanelButton.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -152,6 +142,18 @@ namespace Booking
             this.FilrtButton.UseVisualStyleBackColor = true;
             this.FilrtButton.Click += new System.EventHandler(this.FilrtButton_Click);
             // 
+            // AdminPanelButton
+            // 
+            this.AdminPanelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AdminPanelButton.Location = new System.Drawing.Point(1023, 12);
+            this.AdminPanelButton.Name = "AdminPanelButton";
+            this.AdminPanelButton.Size = new System.Drawing.Size(296, 33);
+            this.AdminPanelButton.TabIndex = 8;
+            this.AdminPanelButton.Text = "Панель администратора";
+            this.AdminPanelButton.UseVisualStyleBackColor = true;
+            this.AdminPanelButton.Visible = false;
+            this.AdminPanelButton.Click += new System.EventHandler(this.button2_Click);
+            // 
             // HotelsPanel
             // 
             this.HotelsPanel.AutoScroll = true;
@@ -174,10 +176,11 @@ namespace Booking
             // 
             // AuthPanel
             // 
-            this.AuthPanel.Controls.Add(this.AuthButton);
-            this.AuthPanel.Controls.Add(this.PaswTextBox);
-            this.AuthPanel.Controls.Add(this.LoginTextBox);
+            this.AuthPanel.Controls.Add(this.HelloLabel);
             this.AuthPanel.Controls.Add(this.label5);
+            this.AuthPanel.Controls.Add(this.AuthButton);
+            this.AuthPanel.Controls.Add(this.LoginTextBox);
+            this.AuthPanel.Controls.Add(this.PaswTextBox);
             this.AuthPanel.Controls.Add(this.label4);
             this.AuthPanel.Controls.Add(this.AdminPanelButton);
             this.AuthPanel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -186,30 +189,40 @@ namespace Booking
             this.AuthPanel.Size = new System.Drawing.Size(1494, 54);
             this.AuthPanel.TabIndex = 9;
             // 
-            // label4
+            // HelloLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(12, 12);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(149, 25);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Введите логин";
+            this.HelloLabel.AutoSize = true;
+            this.HelloLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.HelloLabel.Location = new System.Drawing.Point(17, 14);
+            this.HelloLabel.Name = "HelloLabel";
+            this.HelloLabel.Size = new System.Drawing.Size(0, 25);
+            this.HelloLabel.TabIndex = 11;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(422, 16);
+            this.label5.Location = new System.Drawing.Point(420, 16);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(161, 25);
             this.label5.TabIndex = 10;
             this.label5.Text = "Введите пароль";
             // 
+            // AuthButton
+            // 
+            this.AuthButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AuthButton.Location = new System.Drawing.Point(870, 13);
+            this.AuthButton.Name = "AuthButton";
+            this.AuthButton.Size = new System.Drawing.Size(111, 32);
+            this.AuthButton.TabIndex = 13;
+            this.AuthButton.Text = "Войти";
+            this.AuthButton.UseVisualStyleBackColor = true;
+            this.AuthButton.Click += new System.EventHandler(this.AuthButton_Click);
+            // 
             // LoginTextBox
             // 
             this.LoginTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LoginTextBox.Location = new System.Drawing.Point(182, 12);
+            this.LoginTextBox.Location = new System.Drawing.Point(189, 15);
             this.LoginTextBox.Name = "LoginTextBox";
             this.LoginTextBox.Size = new System.Drawing.Size(221, 30);
             this.LoginTextBox.TabIndex = 11;
@@ -222,16 +235,15 @@ namespace Booking
             this.PaswTextBox.Size = new System.Drawing.Size(221, 30);
             this.PaswTextBox.TabIndex = 12;
             // 
-            // AuthButton
+            // label4
             // 
-            this.AuthButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AuthButton.Location = new System.Drawing.Point(859, 12);
-            this.AuthButton.Name = "AuthButton";
-            this.AuthButton.Size = new System.Drawing.Size(111, 32);
-            this.AuthButton.TabIndex = 13;
-            this.AuthButton.Text = "Войти";
-            this.AuthButton.UseVisualStyleBackColor = true;
-            this.AuthButton.Click += new System.EventHandler(this.AuthButton_Click);
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(15, 14);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(149, 25);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Введите логин";
             // 
             // MainForm
             // 
@@ -274,6 +286,7 @@ namespace Booking
         private System.Windows.Forms.TextBox LoginTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label HelloLabel;
     }
 }
 

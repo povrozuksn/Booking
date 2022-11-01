@@ -16,6 +16,7 @@ namespace Booking
     public partial class MainForm : Form
     {
         public static string Login = "";
+        public static string NameSurname = "";
 
         public static List<Hotel> hotels = new List<Hotel>();
         /// <summary>
@@ -151,13 +152,34 @@ namespace Booking
 
         private void AuthButton_Click(object sender, EventArgs e)
         {
-            List<string> user_data = MainForm.MySelect("SELECT Login FROM users WHERE Login = '"+ LoginTextBox.Text +"'");
+            List<string> user_data = MainForm.MySelect(
+            "SELECT Login, Name, Surname FROM users WHERE Login = '"+ LoginTextBox.Text +"' and Password = '"+ PaswTextBox.Text + "'");
             
             if(user_data.Count>0)
             {
                 Login = user_data[0];
+                NameSurname = user_data[1] + " " + user_data[2];
                 AuthPanel.Controls.Clear();
+                AuthButton.Text = "Выйти";
+                AuthPanel.Controls.Add(AuthButton);
+                AdminPanelButton.Visible = true;
+                AuthPanel.Controls.Add(AdminPanelButton);
+                AuthPanel.Controls.Add(HelloLabel);
+                HelloLabel.Text = "Приветствуем, " + NameSurname;
+            }
+            else
+            {
+                var result = MessageBox.Show("Вы указали неверный логин/пароль", "Зарегистрироваться", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    RegForm reg = new RegForm();
+                    reg.ShowDialog();
+                }                    
+            }
 
+            if(AuthButton.Text == "Выйти")
+            {
+                MainForm_Load(sender, e);
             }
 
         }
