@@ -31,6 +31,7 @@ namespace Booking
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HotelForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -39,16 +40,24 @@ namespace Booking
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.OpinionPanel = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.OpinionButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            this.OpinionPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.OpinionPanel);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
@@ -56,14 +65,23 @@ namespace Booking
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1103, 300);
+            this.panel1.Size = new System.Drawing.Size(1103, 337);
             this.panel1.TabIndex = 0;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(467, 98);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(46, 17);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "label5";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(474, 185);
+            this.label2.Location = new System.Drawing.Point(465, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 25);
             this.label2.TabIndex = 6;
@@ -73,7 +91,7 @@ namespace Booking
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(473, 15);
+            this.label1.Location = new System.Drawing.Point(12, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(304, 36);
             this.label1.TabIndex = 1;
@@ -82,7 +100,7 @@ namespace Booking
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(15, 15);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 48);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(422, 273);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -96,9 +114,9 @@ namespace Booking
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.pictureBox6);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 300);
+            this.panel2.Location = new System.Drawing.Point(0, 337);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1103, 310);
+            this.panel2.Size = new System.Drawing.Size(1103, 273);
             this.panel2.TabIndex = 1;
             // 
             // label4
@@ -147,14 +165,71 @@ namespace Booking
             this.pictureBox6.Tag = "Одноместный номер";
             this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
             // 
-            // label5
+            // OpinionPanel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(476, 223);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 17);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "label5";
+            this.OpinionPanel.Controls.Add(this.OpinionButton);
+            this.OpinionPanel.Controls.Add(this.numericUpDown1);
+            this.OpinionPanel.Controls.Add(this.textBox1);
+            this.OpinionPanel.Controls.Add(this.label7);
+            this.OpinionPanel.Controls.Add(this.label6);
+            this.OpinionPanel.Location = new System.Drawing.Point(450, 136);
+            this.OpinionPanel.Name = "OpinionPanel";
+            this.OpinionPanel.Size = new System.Drawing.Size(639, 184);
+            this.OpinionPanel.TabIndex = 8;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(3, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(165, 25);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Оставьте отзыв";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(483, 1);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(154, 25);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Оцените (0-10)";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox1.Location = new System.Drawing.Point(12, 33);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(469, 135);
+            this.textBox1.TabIndex = 2;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.numericUpDown1.Location = new System.Drawing.Point(487, 37);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.ReadOnly = true;
+            this.numericUpDown1.Size = new System.Drawing.Size(150, 30);
+            this.numericUpDown1.TabIndex = 3;
+            // 
+            // OpinionButton
+            // 
+            this.OpinionButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.OpinionButton.Location = new System.Drawing.Point(489, 100);
+            this.OpinionButton.Name = "OpinionButton";
+            this.OpinionButton.Size = new System.Drawing.Size(147, 68);
+            this.OpinionButton.TabIndex = 4;
+            this.OpinionButton.Text = "Отправить";
+            this.OpinionButton.UseVisualStyleBackColor = true;
+            this.OpinionButton.Click += new System.EventHandler(this.OpinionButton_Click);
             // 
             // HotelForm
             // 
@@ -173,6 +248,9 @@ namespace Booking
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            this.OpinionPanel.ResumeLayout(false);
+            this.OpinionPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -189,5 +267,11 @@ namespace Booking
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel OpinionPanel;
+        private System.Windows.Forms.Button OpinionButton;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
     }
 }

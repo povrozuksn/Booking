@@ -25,5 +25,10 @@ namespace Booking
             MessageBox.Show("Сохранено");
             Close();
         }
+
+        private void RegForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

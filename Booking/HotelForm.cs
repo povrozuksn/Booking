@@ -41,17 +41,19 @@ namespace Booking
     {
         public static string Hotel_Name;
         public static int Rating;
+        public static int id;
 
         public HotelForm(string hotel_name)
         {
             InitializeComponent();
 
-            List<string> otel = MainForm.MySelect("SELECT Name, City, Rating, Image, Adress FROM hotels WHERE Name = '" + hotel_name + "'");
+            List<string> otel = MainForm.MySelect("SELECT Name, City, Rating, Image, Adress, ID FROM hotels WHERE Name = '" + hotel_name + "'");
 
             Text = otel[0];
             label1.Text = otel[0];
             Hotel_Name = otel[0];
             Rating = Convert.ToInt32(otel[2]);
+            id = Convert.ToInt32(otel[5]);
             try
             {
                 pictureBox1.Load("../../Pictures/" + otel[3]);
@@ -59,12 +61,21 @@ namespace Booking
             catch (Exception) { };
             label5.Text = otel[4];
 
+            if (MainForm.Login != "")
+            {
+                OpinionPanel.Visible = true;
+            }
+            else
+            {
+                OpinionPanel.Visible = false;
+            }
+
             int x = 360;
             for(int i=0; i<Rating; i++)
             {
                 PictureBox box = new PictureBox();
                 box.Load("../../Pictures/star.png");
-                box.Location = new Point(x, 60);
+                box.Location = new Point(x, 5);
                 box.Size = new Size(40, 40);
                 box.SizeMode = PictureBoxSizeMode.Zoom;
                 panel1.Controls.Add(box);
@@ -90,6 +101,14 @@ namespace Booking
             Label lbl = (Label)sender;
             RoomForm rf = new RoomForm(Hotel_Name, lbl.Text, Rating);
             rf.Show();
+        }
+
+        private void OpinionButton_Click(object sender, EventArgs e)
+        {            
+            MainForm.MyUpdate("INSERT INTO rating (User, Hotel_id, Rate, Comments)" +
+                              "VALUES('" + MainForm.Login + "', '" + id + "', '" + numericUpDown1.Value.ToString() + "', '" + textBox1.Text + "')");
+
+            MessageBox.Show("Спасибо");
         }
     }
 }

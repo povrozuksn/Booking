@@ -126,6 +126,10 @@ namespace Booking
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            if (AuthButton.Text == "Выйти")
+            {
+                MessageBox.Show("Вы уверены?");
+            }
 
         }
 
@@ -175,13 +179,7 @@ namespace Booking
                     RegForm reg = new RegForm();
                     reg.ShowDialog();
                 }                    
-            }
-
-            if(AuthButton.Text == "Выйти")
-            {
-                MainForm_Load(sender, e);
-            }
-
+            } 
         }
     }
 }

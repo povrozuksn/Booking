@@ -174,6 +174,7 @@ namespace Booking
             this.Controls.Add(this.label1);
             this.Name = "RegForm";
             this.Text = "RegForm";
+            this.Load += new System.EventHandler(this.RegForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
