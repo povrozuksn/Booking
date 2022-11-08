@@ -10,50 +10,23 @@ using System.Windows.Forms;
 
 namespace Booking
 {
-    public struct Hotel
-    {
-        public string Name;
-        public string City;
-        public int Rating;
-        public string Picture_Adress;
-        public PictureBox pb;
-        public Label lbl;
-
-        public Hotel(string _Name, string _City, int _Rating, string _Adress)
-        {
-            Name = _Name;
-            City = _City;
-            Rating = _Rating;
-            Picture_Adress = _Adress;
-            pb = new PictureBox();
-            try
-            {
-                pb.Load("../../Pictures/" + _Adress);
-            }
-            catch (Exception) { }
-
-            lbl = new Label();
-        }
-    }
-
-
     public partial class HotelForm : Form
     {
         public static string Hotel_Name;
         public static int Rating;
         public static int id;
 
-        public HotelForm(string hotel_name)
+        public HotelForm(string hotel_id)
         {
             InitializeComponent();
 
-            List<string> otel = MainForm.MySelect("SELECT Name, City, Rating, Image, Adress, ID FROM hotels WHERE Name = '" + hotel_name + "'");
+            List<string> otel = MainForm.MySelect("SELECT Name, City, Rating, Image, Adress, ID FROM hotels WHERE ID = '" + hotel_id + "'");
 
             Text = otel[0];
             label1.Text = otel[0];
             Hotel_Name = otel[0];
             Rating = Convert.ToInt32(otel[2]);
-            id = Convert.ToInt32(otel[5]);
+            id = Convert.ToInt32(hotel_id);
             try
             {
                 pictureBox1.Load("../../Pictures/" + otel[3]);

@@ -18,7 +18,6 @@ namespace Booking
         public static string Login = "";
         public static string NameSurname = "";
 
-        public static List<Hotel> hotels = new List<Hotel>();
         /// <summary>
         /// Функция Select-запроса
         /// </summary>
@@ -54,31 +53,33 @@ namespace Booking
         {
             InitializeComponent();
 
-            List<string> otels = MySelect("SELECT Name, City, Rating, Image FROM hotels");
+            List<string> otels = MySelect("SELECT Name, City, Rating, Image, ID FROM hotels");
             
-            for(int i=0; i< otels.Count; i+=4)
-            { 
-                Hotel hotel = new Hotel(otels[i], otels[i+1], Convert.ToInt32(otels[i+2]), otels[i+3]);
-                hotels.Add(hotel);
-            }
-           
-
             int x = 40;
-            foreach(Hotel hotel in hotels)
+            for (int i=0; i< otels.Count; i+=5)
             {
-                hotel.pb.Location = new Point(x, 30);
-                hotel.pb.Size = new Size(250, 180);
-                hotel.pb.Image = hotel.pb.Image;
-                hotel.pb.SizeMode = PictureBoxSizeMode.Zoom;
-                hotel.pb.Click += new EventHandler(pictureBox1_Click);
-                HotelsPanel.Controls.Add(hotel.pb);
+                PictureBox pb = new PictureBox();
+                pb = new PictureBox();
+                try
+                {
+                    pb.Load("../../Pictures/" + otels[i + 3]);
+                }
+                catch (Exception) { }
+                pb.Location = new Point(x, 30);
+                pb.Size = new Size(250, 180);
+                pb.SizeMode = PictureBoxSizeMode.Zoom;
+                pb.Tag = otels[i + 4];
+                pb.Click += new EventHandler(pictureBox1_Click);
+                HotelsPanel.Controls.Add(pb);
 
-                hotel.lbl.Location = new Point(x, 210);
-                hotel.lbl.Size = new Size(250, 30);
-                hotel.lbl.Font = new Font("Microsoft Sans Serif", 12);
-                hotel.lbl.Text = hotel.Name;
-                hotel.lbl.Click += new EventHandler(label4_Click);
-                HotelsPanel.Controls.Add(hotel.lbl);
+                Label lbl = new Label();
+                lbl.Location = new Point(x, 210);
+                lbl.Size = new Size(250, 30);
+                lbl.Font = new Font("Microsoft Sans Serif", 12);
+                lbl.Text = otels[i];
+                lbl.Tag = otels[i + 4];
+                lbl.Click += new EventHandler(label4_Click);
+                HotelsPanel.Controls.Add(lbl);
 
                 x += 260;
             }
@@ -100,42 +101,26 @@ namespace Booking
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            PictureBox pb = (PictureBox)sender;
-            foreach(Hotel hotel in hotels)
-            {
-                if(hotel.pb.Image == pb.Image)
-                {
-                    HotelForm hf = new HotelForm(hotel.Name);
-                    hf.ShowDialog();
-                }
-            }            
+            PictureBox pb = (PictureBox)sender;            
+            HotelForm hf = new HotelForm(pb.Tag.ToString());
+            hf.ShowDialog();                      
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
-            Label lb = (Label)sender;
-            foreach (Hotel hotel in hotels)
-            {
-                if (hotel.Name == lb.Text)
-                {
-                    HotelForm hf = new HotelForm(hotel.Name);
-                    hf.ShowDialog();
-                }
-            }
+            Label lb = (Label)sender;            
+            HotelForm hf = new HotelForm(lb.Tag.ToString());
+            hf.ShowDialog();                
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            if (AuthButton.Text == "Выйти")
-            {
-                MessageBox.Show("Вы уверены?");
-            }
-
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            foreach(Hotel hotel in hotels)
+            /*foreach(Hotel hotel in hotels)
             {
                 bool Visible = true;
                 if(CityComboBox.Text != "" && CityComboBox.Text != hotel.City)
@@ -145,7 +130,7 @@ namespace Booking
 
                 hotel.pb.Visible = Visible;
                 hotel.lbl.Visible = Visible;
-            }
+            }*/
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -158,28 +143,45 @@ namespace Booking
         {
             List<string> user_data = MainForm.MySelect(
             "SELECT Login, Name, Surname FROM users WHERE Login = '"+ LoginTextBox.Text +"' and Password = '"+ PaswTextBox.Text + "'");
-            
-            if(user_data.Count>0)
+
+            if (AuthButton.Text == "Выйти")
             {
-                Login = user_data[0];
-                NameSurname = user_data[1] + " " + user_data[2];
+                Login = "";
                 AuthPanel.Controls.Clear();
-                AuthButton.Text = "Выйти";
+                AuthButton.Text = "Войти";
                 AuthPanel.Controls.Add(AuthButton);
-                AdminPanelButton.Visible = true;
-                AuthPanel.Controls.Add(AdminPanelButton);
-                AuthPanel.Controls.Add(HelloLabel);
-                HelloLabel.Text = "Приветствуем, " + NameSurname;
+                AdminPanelButton.Visible = false;
+                AuthPanel.Controls.Add(label4);
+                LoginTextBox.Text = "";
+                AuthPanel.Controls.Add(label5);
+                AuthPanel.Controls.Add(LoginTextBox);
+                PaswTextBox.Text = "";
+                AuthPanel.Controls.Add(PaswTextBox);
             }
             else
             {
-                var result = MessageBox.Show("Вы указали неверный логин/пароль", "Зарегистрироваться", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
+                if (user_data.Count > 0)
                 {
-                    RegForm reg = new RegForm();
-                    reg.ShowDialog();
-                }                    
-            } 
+                    Login = user_data[0];
+                    NameSurname = user_data[1] + " " + user_data[2];
+                    AuthPanel.Controls.Clear();
+                    AuthButton.Text = "Выйти";
+                    AuthPanel.Controls.Add(AuthButton);
+                    AdminPanelButton.Visible = true;
+                    AuthPanel.Controls.Add(AdminPanelButton);
+                    AuthPanel.Controls.Add(HelloLabel);
+                    HelloLabel.Text = "Приветствуем, " + NameSurname;
+                }
+                else
+                {
+                    var result = MessageBox.Show("Вы указали неверный логин/пароль", "Зарегистрироваться", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        RegForm reg = new RegForm();
+                        reg.ShowDialog();
+                    }
+                }
+            }
         }
     }
 }

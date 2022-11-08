@@ -79,7 +79,7 @@ namespace Booking
                 btn.Location = new Point(740, y);
                 btn.Size = new Size(100, 30);
                 btn.Font = new Font("Microsoft Sans Serif", 12);
-                btn.Click += new EventHandler(DeleteHotelClick);
+                btn.Click += new EventHandler(DeleteRoomClick);
                 btn.Text = "Удалить";
                 panel1.Controls.Add(btn);
 
@@ -87,7 +87,7 @@ namespace Booking
             }
         }
 
-        private void DeleteHotelClick(object sender, EventArgs e)
+        private void DeleteRoomClick(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
             int y = btn.Location.Y;
