@@ -19,7 +19,7 @@ namespace Booking
         public HotelForm(string hotel_id)
         {
             InitializeComponent();
-
+            RoomsPanel.Controls.Clear();
             List<string> otel = MainForm.MySelect("SELECT Name, City, Rating, Image, Adress, ID FROM hotels WHERE ID = '" + hotel_id + "'");
 
             Text = otel[0];
@@ -43,6 +43,7 @@ namespace Booking
                 OpinionPanel.Visible = false;
             }
 
+            //Звезды
             int x = 360;
             for(int i=0; i<Rating; i++)
             {
@@ -54,6 +55,36 @@ namespace Booking
                 panel1.Controls.Add(box);
 
                 x += 43;
+            }
+            //Номера
+            List<string> rooms = MainForm.MySelect("SELECT Name, Price, Image, ID FROM rooms WHERE Hotel_id = '" + hotel_id + "'");
+            x = 40;
+            for (int i = 0; i < rooms.Count; i += 4)
+            {
+                PictureBox pb = new PictureBox();
+                pb = new PictureBox();
+                try
+                {
+                    pb.Load("../../Pictures/" + rooms[i + 2]);
+                }
+                catch (Exception) { }
+                pb.Location = new Point(x, 20);
+                pb.Size = new Size(250, 180);
+                pb.SizeMode = PictureBoxSizeMode.Zoom;
+                pb.Tag = rooms[i + 3];
+                pb.Click += new EventHandler(pictureBox6_Click);
+                RoomsPanel.Controls.Add(pb);
+
+                Label lbl = new Label();
+                lbl.Location = new Point(x, 200);
+                lbl.Size = new Size(250, 30);
+                lbl.Font = new Font("Microsoft Sans Serif", 12);
+                lbl.Text = rooms[i];
+                lbl.Tag = rooms[i + 3];
+                lbl.Click += new EventHandler(label3_Click);
+                RoomsPanel.Controls.Add(lbl);
+
+                x += 260;
             }
         }
 

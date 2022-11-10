@@ -48,6 +48,8 @@ namespace Booking
             this.LoginTextBox = new System.Windows.Forms.TextBox();
             this.PaswTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.RatingComboBox = new System.Windows.Forms.ComboBox();
             this.FiltrPanel.SuspendLayout();
             this.HotelsPanel.SuspendLayout();
             this.AuthPanel.SuspendLayout();
@@ -55,6 +57,8 @@ namespace Booking
             // 
             // FiltrPanel
             // 
+            this.FiltrPanel.Controls.Add(this.label6);
+            this.FiltrPanel.Controls.Add(this.RatingComboBox);
             this.FiltrPanel.Controls.Add(this.button1);
             this.FiltrPanel.Controls.Add(this.dateTimePicker2);
             this.FiltrPanel.Controls.Add(this.label3);
@@ -71,17 +75,17 @@ namespace Booking
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(835, 87);
+            this.button1.Location = new System.Drawing.Point(1143, 87);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(102, 40);
             this.button1.TabIndex = 7;
             this.button1.Text = "Найти";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Search_Click);
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(577, 90);
+            this.dateTimePicker2.Location = new System.Drawing.Point(885, 90);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(240, 30);
             this.dateTimePicker2.TabIndex = 6;
@@ -89,7 +93,7 @@ namespace Booking
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(572, 51);
+            this.label3.Location = new System.Drawing.Point(880, 51);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(226, 25);
             this.label3.TabIndex = 5;
@@ -98,7 +102,7 @@ namespace Booking
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(301, 51);
+            this.label2.Location = new System.Drawing.Point(609, 51);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(223, 25);
             this.label2.TabIndex = 4;
@@ -115,13 +119,14 @@ namespace Booking
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(306, 90);
+            this.dateTimePicker1.Location = new System.Drawing.Point(614, 90);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(238, 30);
             this.dateTimePicker1.TabIndex = 2;
             // 
             // CityComboBox
             // 
+            this.CityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CityComboBox.FormattingEnabled = true;
             this.CityComboBox.Items.AddRange(new object[] {
             "Москва",
@@ -245,6 +250,35 @@ namespace Booking
             this.label4.TabIndex = 9;
             this.label4.Text = "Введите логин";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(305, 51);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(185, 25);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Выберите рейтинг";
+            // 
+            // RatingComboBox
+            // 
+            this.RatingComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.RatingComboBox.FormattingEnabled = true;
+            this.RatingComboBox.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.RatingComboBox.Location = new System.Drawing.Point(310, 87);
+            this.RatingComboBox.Name = "RatingComboBox";
+            this.RatingComboBox.Size = new System.Drawing.Size(275, 33);
+            this.RatingComboBox.TabIndex = 8;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -287,6 +321,8 @@ namespace Booking
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label HelloLabel;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox RatingComboBox;
     }
 }
 

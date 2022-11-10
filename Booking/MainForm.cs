@@ -52,37 +52,12 @@ namespace Booking
         public MainForm()
         {
             InitializeComponent();
-
-            List<string> otels = MySelect("SELECT Name, City, Rating, Image, ID FROM hotels");
-            
-            int x = 40;
-            for (int i=0; i< otels.Count; i+=5)
-            {
-                PictureBox pb = new PictureBox();
-                pb = new PictureBox();
-                try
-                {
-                    pb.Load("../../Pictures/" + otels[i + 3]);
-                }
-                catch (Exception) { }
-                pb.Location = new Point(x, 30);
-                pb.Size = new Size(250, 180);
-                pb.SizeMode = PictureBoxSizeMode.Zoom;
-                pb.Tag = otels[i + 4];
-                pb.Click += new EventHandler(pictureBox1_Click);
-                HotelsPanel.Controls.Add(pb);
-
-                Label lbl = new Label();
-                lbl.Location = new Point(x, 210);
-                lbl.Size = new Size(250, 30);
-                lbl.Font = new Font("Microsoft Sans Serif", 12);
-                lbl.Text = otels[i];
-                lbl.Tag = otels[i + 4];
-                lbl.Click += new EventHandler(label4_Click);
-                HotelsPanel.Controls.Add(lbl);
-
-                x += 260;
-            }
+            Search_Click(null, null);
+            List<string> cities = MySelect("SELECT Name FROM cities ORDER BY Name");
+            CityComboBox.Items.Clear();
+            CityComboBox.Items.Add("");
+            foreach (string city in cities)
+                CityComboBox.Items.Add(city);
         }
 
 
@@ -118,19 +93,45 @@ namespace Booking
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Search_Click(object sender, EventArgs e)
         {
-            /*foreach(Hotel hotel in hotels)
-            {
-                bool Visible = true;
-                if(CityComboBox.Text != "" && CityComboBox.Text != hotel.City)
-                {
-                    Visible = false;
-                }
+            HotelsPanel.Controls.Clear();
+            string command = "SELECT Name, City, Rating, Image, ID FROM hotels WHERE 1";
+            if (CityComboBox.Text != "")
+                command += " AND City = '" + CityComboBox.Text + "'";
+            if (RatingComboBox.Text != "")
+                command += " AND Rating >= '" + RatingComboBox.Text + "'";
+            List<string> otels = MySelect(command);
 
-                hotel.pb.Visible = Visible;
-                hotel.lbl.Visible = Visible;
-            }*/
+            int x = 40;
+            for (int i = 0; i < otels.Count; i += 5)
+            {
+                PictureBox pb = new PictureBox();
+                pb = new PictureBox();
+                try
+                {
+                    pb.Load("../../Pictures/" + otels[i + 3]);
+                }
+                catch (Exception) { }
+                pb.Location = new Point(x, 30);
+                pb.Size = new Size(250, 180);
+                pb.SizeMode = PictureBoxSizeMode.Zoom;
+                pb.Tag = otels[i + 4];
+                pb.Click += new EventHandler(pictureBox1_Click);
+                HotelsPanel.Controls.Add(pb);
+
+                Label lbl = new Label();
+                lbl.Location = new Point(x, 210);
+                lbl.Size = new Size(250, 30);
+                lbl.Font = new Font("Microsoft Sans Serif", 12);
+                lbl.Text = otels[i];
+                lbl.Tag = otels[i + 4];
+                lbl.Click += new EventHandler(label4_Click);
+                HotelsPanel.Controls.Add(lbl);
+
+                x += 260;
+            }
+
         }
 
         private void button2_Click(object sender, EventArgs e)

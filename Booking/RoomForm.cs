@@ -34,7 +34,7 @@ namespace Booking
             for (int i = 0; i < Rating; i++)
             {
                 PictureBox box = new PictureBox();
-                box.Load("../../Pictures/star.jpg");
+                box.Load("../../Pictures/star.png");
                 box.Location = new Point(x, 70);
                 box.Size = new Size(50, 50);
                 box.SizeMode = PictureBoxSizeMode.Zoom;
