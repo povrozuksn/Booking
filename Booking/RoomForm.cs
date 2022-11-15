@@ -12,30 +12,36 @@ namespace Booking
 {
     public partial class RoomForm : Form
     {
-        public RoomForm(string HotelName, string RoomName, int Rating)
+        public static int Rating;
+
+        public RoomForm(string hotel_id, string room_id)
         {
             InitializeComponent();
 
-            Text = HotelName + ": " + RoomName;
-            label1.Text = HotelName;
-            label3.Text = RoomName;
+            List<string> otel = MainForm.MySelect("SELECT Name, City, Rating, Image, Adress, ID FROM hotels WHERE ID = '" + hotel_id + "'");
+            List<string> room = MainForm.MySelect("SELECT Name, Price, Image, ID FROM rooms WHERE ID = '" + room_id + "'");
 
-            if(RoomName == "Одноместный номер")
-            {
-                pictureBox1.Load("../../Pictures/1seat.jpg");
-            }
+            Text = otel[0] + ": " + room[0];
+            label1.Text = otel[0];
+            label3.Text = room[0];
+            label4.Text = otel[4];
+            Rating = Convert.ToInt32(otel[2]);
 
-            if (RoomName == "Двухместный номер")
+            try
             {
-                pictureBox1.Load("../../Pictures/2seat.jpg");
+                pictureBox1.Load("../../Pictures/" + room[2]);
             }
+            catch (Exception) { };
+
+            
+            
 
             int x = 360;
             for (int i = 0; i < Rating; i++)
             {
                 PictureBox box = new PictureBox();
                 box.Load("../../Pictures/star.png");
-                box.Location = new Point(x, 70);
+                box.Location = new Point(x, 50);
                 box.Size = new Size(50, 50);
                 box.SizeMode = PictureBoxSizeMode.Zoom;
                 InfoPanel.Controls.Add(box);
@@ -51,6 +57,11 @@ namespace Booking
         }
 
         private void RoomForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }

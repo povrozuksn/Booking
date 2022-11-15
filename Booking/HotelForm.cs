@@ -14,7 +14,7 @@ namespace Booking
     {
         public static string Hotel_Name;
         public static int Rating;
-        public static int id;
+        public static int hotelid;
 
         public HotelForm(string hotel_id)
         {
@@ -26,7 +26,7 @@ namespace Booking
             label1.Text = otel[0];
             Hotel_Name = otel[0];
             Rating = Convert.ToInt32(otel[2]);
-            id = Convert.ToInt32(hotel_id);
+            hotelid = Convert.ToInt32(hotel_id);
             try
             {
                 pictureBox1.Load("../../Pictures/" + otel[3]);
@@ -96,21 +96,21 @@ namespace Booking
         private void pictureBox6_Click(object sender, EventArgs e)
         {
             PictureBox pb = (PictureBox)sender;
-            RoomForm rf = new RoomForm(Hotel_Name, pb.Tag.ToString(), Rating);
+            RoomForm rf = new RoomForm(hotelid.ToString(), pb.Tag.ToString());
             rf.Show();
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
             Label lbl = (Label)sender;
-            RoomForm rf = new RoomForm(Hotel_Name, lbl.Text, Rating);
+            RoomForm rf = new RoomForm(hotelid.ToString(), lbl.Tag.ToString());
             rf.Show();
         }
 
         private void OpinionButton_Click(object sender, EventArgs e)
         {            
             MainForm.MyUpdate("INSERT INTO rating (User, Hotel_id, Rate, Comments)" +
-                              "VALUES('" + MainForm.Login + "', '" + id + "', '" + numericUpDown1.Value.ToString() + "', '" + textBox1.Text + "')");
+                              "VALUES('" + MainForm.Login + "', '" + hotelid + "', '" + numericUpDown1.Value.ToString() + "', '" + textBox1.Text + "')");
 
             MessageBox.Show("Спасибо");
         }
