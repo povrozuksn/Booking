@@ -15,12 +15,17 @@ namespace Booking
         public RegForm()
         {
             InitializeComponent();
+            List<string> cities = MainForm.MySelect("SELECT Name FROM cities ORDER BY Name");
+            CityComboBox.Items.Clear();
+            CityComboBox.Items.Add("");
+            foreach (string city in cities)
+                CityComboBox.Items.Add(city);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MainForm.MyUpdate("INSERT INTO users (Name, Surname, Login, Password, Email)" +
-                              "VALUES('" + textBox1.Text + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox4.Text + "', '" + textBox5.Text + "')");
+            MainForm.MyUpdate("INSERT INTO users (Name, Surname, City, Age, Login, Password, Email)" +
+                              "VALUES('" + NameTextBox.Text + "', '" + SurnameTextBox.Text + "', '" + CityComboBox.Text + "', '" + AgeTextBox.Text + "', '" + LoginTextBox.Text + "', '" + PasTextBox.Text + "', '" + EmailTextBox.Text + "')");
 
             MessageBox.Show("Сохранено");
             Close();

@@ -179,7 +179,7 @@ namespace Booking
             // AdminPanelButton
             // 
             this.AdminPanelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AdminPanelButton.Location = new System.Drawing.Point(1023, 12);
+            this.AdminPanelButton.Location = new System.Drawing.Point(981, 12);
             this.AdminPanelButton.Name = "AdminPanelButton";
             this.AdminPanelButton.Size = new System.Drawing.Size(296, 33);
             this.AdminPanelButton.TabIndex = 8;
@@ -245,7 +245,7 @@ namespace Booking
             // AuthButton
             // 
             this.AuthButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AuthButton.Location = new System.Drawing.Point(870, 13);
+            this.AuthButton.Location = new System.Drawing.Point(852, 13);
             this.AuthButton.Name = "AuthButton";
             this.AuthButton.Size = new System.Drawing.Size(111, 32);
             this.AuthButton.TabIndex = 13;
