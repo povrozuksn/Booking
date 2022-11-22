@@ -152,12 +152,14 @@ namespace Booking
                 AuthButton.Text = "Войти";
                 AuthPanel.Controls.Add(AuthButton);
                 AdminPanelButton.Visible = false;
+                AccountButton.Visible = false;
                 AuthPanel.Controls.Add(label4);
                 LoginTextBox.Text = "";
                 AuthPanel.Controls.Add(label5);
                 AuthPanel.Controls.Add(LoginTextBox);
                 PaswTextBox.Text = "";
                 AuthPanel.Controls.Add(PaswTextBox);
+
             }
             else
             {
@@ -169,6 +171,8 @@ namespace Booking
                     AuthButton.Text = "Выйти";
                     AuthPanel.Controls.Add(AuthButton);
                     AdminPanelButton.Visible = true;
+                    AuthPanel.Controls.Add(AccountButton);
+                    AccountButton.Visible = true;
                     AuthPanel.Controls.Add(AdminPanelButton);
                     AuthPanel.Controls.Add(HelloLabel);
                     HelloLabel.Text = "Приветствуем, " + NameSurname;
@@ -183,6 +187,12 @@ namespace Booking
                     }
                 }
             }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            AccountForm af = new AccountForm();
+            af.ShowDialog();
         }
     }
 }

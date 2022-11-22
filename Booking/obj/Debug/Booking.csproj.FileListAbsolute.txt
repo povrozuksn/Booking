@@ -17,3 +17,4 @@ C:\Users\root\source\repos\Booking\Booking\obj\Debug\Booking.AdminHotelsForm.res
 C:\Users\root\source\repos\Booking\Booking\obj\Debug\Booking.AdminRoomsForm.resources
 C:\Users\root\source\repos\Booking\Booking\obj\Debug\Booking.RegForm.resources
 C:\Users\root\source\repos\Booking\Booking\obj\Debug\Booking.AdminUsersForm.resources
+C:\Users\root\source\repos\Booking\Booking\obj\Debug\Booking.AccountForm.resources

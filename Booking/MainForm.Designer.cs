@@ -50,6 +50,7 @@ namespace Booking
             this.LoginTextBox = new System.Windows.Forms.TextBox();
             this.PaswTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.AccountButton = new System.Windows.Forms.Button();
             this.FiltrPanel.SuspendLayout();
             this.HotelsPanel.SuspendLayout();
             this.AuthPanel.SuspendLayout();
@@ -210,6 +211,7 @@ namespace Booking
             // 
             // AuthPanel
             // 
+            this.AuthPanel.Controls.Add(this.AccountButton);
             this.AuthPanel.Controls.Add(this.HelloLabel);
             this.AuthPanel.Controls.Add(this.label5);
             this.AuthPanel.Controls.Add(this.AuthButton);
@@ -279,6 +281,18 @@ namespace Booking
             this.label4.TabIndex = 9;
             this.label4.Text = "Введите логин";
             // 
+            // AccountButton
+            // 
+            this.AccountButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AccountButton.Location = new System.Drawing.Point(1291, 12);
+            this.AccountButton.Name = "AccountButton";
+            this.AccountButton.Size = new System.Drawing.Size(191, 33);
+            this.AccountButton.TabIndex = 14;
+            this.AccountButton.Text = "Личный кабинет";
+            this.AccountButton.UseVisualStyleBackColor = true;
+            this.AccountButton.Visible = false;
+            this.AccountButton.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -323,6 +337,7 @@ namespace Booking
         private System.Windows.Forms.Label HelloLabel;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox RatingComboBox;
+        private System.Windows.Forms.Button AccountButton;
     }
 }
 
