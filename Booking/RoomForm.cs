@@ -13,10 +13,12 @@ namespace Booking
     public partial class RoomForm : Form
     {
         public static int Rating;
+        string id = "";
 
         public RoomForm(string hotel_id, string room_id)
         {
             InitializeComponent();
+            id = room_id;
 
             List<string> otel = MainForm.MySelect("SELECT Name, City, Rating, Image, Adress, ID FROM hotels WHERE ID = '" + hotel_id + "'");
             List<string> room = MainForm.MySelect("SELECT Name, Price, Image, ID FROM rooms WHERE ID = '" + room_id + "'");
@@ -53,6 +55,17 @@ namespace Booking
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if(MainForm.Login == "")
+            {
+                MessageBox.Show("Вы не авторизованы");
+                return;
+            }
+            
+            MainForm.MyUpdate("INSERT INTO booking(user, datefrom, dateto, room_id) VALUES(" +
+                "'" + MainForm.Login + "'," +
+                "'" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "'," +
+                "'" + dateTimePicker2.Value.ToString("yyyy-MM-dd") + "'," +
+                id + ")");
             MessageBox.Show("Успешно!");
         }
 

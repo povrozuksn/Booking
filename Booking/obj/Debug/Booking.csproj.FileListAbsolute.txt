@@ -18,3 +18,4 @@ C:\Users\root\source\repos\Booking\Booking\obj\Debug\Booking.AdminRoomsForm.reso
 C:\Users\root\source\repos\Booking\Booking\obj\Debug\Booking.RegForm.resources
 C:\Users\root\source\repos\Booking\Booking\obj\Debug\Booking.AdminUsersForm.resources
 C:\Users\root\source\repos\Booking\Booking\obj\Debug\Booking.AccountForm.resources
+C:\Users\root\source\repos\Booking\Booking\obj\Debug\Booking.AdminBookingForm.resources

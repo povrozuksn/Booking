@@ -143,7 +143,7 @@ namespace Booking
         private void AuthButton_Click(object sender, EventArgs e)
         {
             List<string> user_data = MainForm.MySelect(
-            "SELECT Login, Name, Surname FROM users WHERE Login = '"+ LoginTextBox.Text +"' and Password = '"+ PaswTextBox.Text + "'");
+            "SELECT Login, Name, Surname, admin_id FROM users WHERE Login = '"+ LoginTextBox.Text +"' and Password = '"+ PaswTextBox.Text + "'");
 
             if (AuthButton.Text == "Выйти")
             {
@@ -170,7 +170,8 @@ namespace Booking
                     AuthPanel.Controls.Clear();
                     AuthButton.Text = "Выйти";
                     AuthPanel.Controls.Add(AuthButton);
-                    AdminPanelButton.Visible = true;
+                    if(Convert.ToInt32(user_data[3]) == 1)
+                        AdminPanelButton.Visible = true;
                     AuthPanel.Controls.Add(AccountButton);
                     AccountButton.Visible = true;
                     AuthPanel.Controls.Add(AdminPanelButton);

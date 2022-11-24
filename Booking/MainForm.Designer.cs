@@ -44,13 +44,13 @@ namespace Booking
             this.HotelsPanel = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.AuthPanel = new System.Windows.Forms.Panel();
+            this.AccountButton = new System.Windows.Forms.Button();
             this.HelloLabel = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.AuthButton = new System.Windows.Forms.Button();
             this.LoginTextBox = new System.Windows.Forms.TextBox();
             this.PaswTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.AccountButton = new System.Windows.Forms.Button();
             this.FiltrPanel.SuspendLayout();
             this.HotelsPanel.SuspendLayout();
             this.AuthPanel.SuspendLayout();
@@ -225,6 +225,18 @@ namespace Booking
             this.AuthPanel.Size = new System.Drawing.Size(1494, 54);
             this.AuthPanel.TabIndex = 9;
             // 
+            // AccountButton
+            // 
+            this.AccountButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AccountButton.Location = new System.Drawing.Point(1291, 12);
+            this.AccountButton.Name = "AccountButton";
+            this.AccountButton.Size = new System.Drawing.Size(191, 33);
+            this.AccountButton.TabIndex = 14;
+            this.AccountButton.Text = "Личный кабинет";
+            this.AccountButton.UseVisualStyleBackColor = true;
+            this.AccountButton.Visible = false;
+            this.AccountButton.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // HelloLabel
             // 
             this.HelloLabel.AutoSize = true;
@@ -270,6 +282,7 @@ namespace Booking
             this.PaswTextBox.Name = "PaswTextBox";
             this.PaswTextBox.Size = new System.Drawing.Size(221, 30);
             this.PaswTextBox.TabIndex = 12;
+            this.PaswTextBox.UseSystemPasswordChar = true;
             // 
             // label4
             // 
@@ -280,18 +293,6 @@ namespace Booking
             this.label4.Size = new System.Drawing.Size(149, 25);
             this.label4.TabIndex = 9;
             this.label4.Text = "Введите логин";
-            // 
-            // AccountButton
-            // 
-            this.AccountButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AccountButton.Location = new System.Drawing.Point(1291, 12);
-            this.AccountButton.Name = "AccountButton";
-            this.AccountButton.Size = new System.Drawing.Size(191, 33);
-            this.AccountButton.TabIndex = 14;
-            this.AccountButton.Text = "Личный кабинет";
-            this.AccountButton.UseVisualStyleBackColor = true;
-            this.AccountButton.Visible = false;
-            this.AccountButton.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // MainForm
             // 
