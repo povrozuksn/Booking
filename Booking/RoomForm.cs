@@ -14,6 +14,7 @@ namespace Booking
     {
         public static int Rating;
         string id = "";
+        int qty = 0;
 
         public RoomForm(string hotel_id, string room_id)
         {
@@ -21,9 +22,10 @@ namespace Booking
             id = room_id;
 
             List<string> otel = MainForm.MySelect("SELECT Name, City, Rating, Image, Adress, ID FROM hotels WHERE ID = '" + hotel_id + "'");
-            List<string> room = MainForm.MySelect("SELECT Name, Price, Image, ID FROM rooms WHERE ID = '" + room_id + "'");
+            List<string> room = MainForm.MySelect("SELECT Name, Price, Image, ID, quantity FROM rooms WHERE ID = '" + room_id + "'");
 
             Text = otel[0] + ": " + room[0];
+            qty = Convert.ToInt32(room[4]);
             label1.Text = otel[0];
             label3.Text = room[0];
             label4.Text = otel[4];
@@ -55,12 +57,29 @@ namespace Booking
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(MainForm.Login == "")
+            #region Проверка ошибок
+            if (MainForm.Login == "")
             {
                 MessageBox.Show("Вы не авторизованы");
                 return;
             }
             
+            DateTime dt = dateTimePicker1.Value;
+            while(dt <= dateTimePicker2.Value.AddDays(0.5))
+            {
+                List<string> existBooking = MainForm.MySelect("SELECT COUNT(*) FROM booking " +
+                    "WHERE datefrom <= '" + dt.ToString("yyyy-MM-dd") + "'" +
+                    "AND dateto >= '" + dt.ToString("yyyy-MM-dd") + "'");
+                if(Convert.ToInt32(existBooking[0]) >= qty)
+                {
+                    MessageBox.Show("На эти даты мест нет, Выберите другие даты");
+                    return;
+                }
+
+                dt = dt.AddDays(1);
+            }
+            #endregion
+
             MainForm.MyUpdate("INSERT INTO booking(user, datefrom, dateto, room_id) VALUES(" +
                 "'" + MainForm.Login + "'," +
                 "'" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "'," +

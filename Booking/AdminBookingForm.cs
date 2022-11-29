@@ -34,6 +34,9 @@ namespace Booking
                 lbl0.Size = new Size(100, 30);
                 lbl0.Font = new Font("Microsoft Sans Serif", 12);
                 lbl0.Text = booking_list[i];
+                lbl0.Tag = booking_list[i+3];
+                lbl0.AccessibleName = booking_list[i + 1];
+                lbl0.AccessibleDescription = booking_list[i + 2];
                 panel1.Controls.Add(lbl0);
 
                 Label lbl1 = new Label();
@@ -68,11 +71,32 @@ namespace Booking
                 btn.Location = new Point(1000, y);
                 btn.Size = new Size(100, 30);
                 btn.Font = new Font("Microsoft Sans Serif", 12);
-                //btn.Click += new EventHandler(DeleteHotelClick);
+                btn.Click += new EventHandler(DeleteBookingClick);
                 btn.Text = "Удалить";
                 panel1.Controls.Add(btn);
 
                 y += 35;
+            }
+        }
+
+        private void DeleteBookingClick(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int y = btn.Location.Y;
+
+            foreach (Control control in panel1.Controls)
+            {
+                if (control.Location == new Point(10, y))
+                {
+                    MainForm.MyUpdate("DELETE FROM booking" +
+                        " WHERE user = '" + control.Text + "'" +
+                        " AND room_id = '" + control.Tag.ToString() + "'" + 
+                        " AND datefrom = '" + Convert.ToDateTime(control.AccessibleName).ToString("yyyy-MM-dd") + "'" +
+                        " AND dateto = '" + Convert.ToDateTime(control.AccessibleDescription).ToString("yyyy-MM-dd") + "'");
+
+                    AdminBookingForm_Load(sender, e);
+                    return;
+                }
             }
         }
     }
