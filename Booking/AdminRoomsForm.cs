@@ -16,7 +16,7 @@ namespace Booking
         {
             InitializeComponent();
 
-            List<string> hotels_list = MainForm.MySelect("SELECT Name, City, ID FROM hotels");
+            List<string> hotels_list = SQLClass.Select("SELECT Name, City, ID FROM hotels");
 
             comboBox1.Items.Clear();
             for(int i=0; i<hotels_list.Count; i+=3)
@@ -29,8 +29,8 @@ namespace Booking
         private void button2_Click(object sender, EventArgs e)
         {
             string[] parts = comboBox1.Text.Split(new char[] { ',' });
-            
-            MainForm.MyUpdate("INSERT INTO rooms (Name, Price, Name_hotel, City, Hotel_id)" +
+
+            SQLClass.Update("INSERT INTO rooms (Name, Price, Name_hotel, City, Hotel_id)" +
                               "VALUES('" + textBox1.Text + "', '" + textBox2.Text + "', '" + parts[0] + "', '" + parts[1] + "', '" + parts[2] + "')");
 
             MessageBox.Show("Сохранено");
@@ -40,7 +40,7 @@ namespace Booking
 
         private void AdminRoomsForm_Load(object sender, EventArgs e)
         {
-            List<string> list = MainForm.MySelect("SELECT Name, Price, Name_hotel, City, ID, Hotel_id FROM rooms");
+            List<string> list = SQLClass.Select("SELECT Name, Price, Name_hotel, City, ID, Hotel_id FROM rooms");
 
             panel1.Controls.Clear();
             int y = 10;
@@ -96,7 +96,7 @@ namespace Booking
             {
                 if (control.Location == new Point(50, y))
                 {
-                    MainForm.MyUpdate("DELETE FROM rooms WHERE ID = '" + control.Tag + "'");
+                    SQLClass.Update("DELETE FROM rooms WHERE ID = '" + control.Tag + "'");
                     AdminRoomsForm_Load(sender, e);
                     return;
                 }

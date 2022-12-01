@@ -6,8 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MySql.Data;
-using MySql.Data.MySqlClient;
 using System.Data.Common;
 using System.Windows.Forms;
 
@@ -18,42 +16,11 @@ namespace Booking
         public static string Login = "";
         public static string NameSurname = "";
 
-        /// <summary>
-        /// Функция Select-запроса
-        /// </summary>
-        public static List<string> MySelect(string cmdText)
-        {
-            List<string> list = new List<string>();
-
-            MySqlCommand cmd = new MySqlCommand(cmdText, Program.CONN);
-            DbDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                for(int i=0; i<reader.FieldCount;i++)
-                {
-                    list.Add(reader.GetValue(i).ToString());
-                }               
-            }
-            reader.Close();
-
-            return list;
-        }
-
-        /// <summary>
-        /// Функция Update/Insert/Delete - запроса
-        /// </summary>
-        public static void MyUpdate(string cmdText)
-        {
-            MySqlCommand cmd = new MySqlCommand(cmdText, Program.CONN);
-            DbDataReader reader = cmd.ExecuteReader();
-            reader.Close();
-        }
-
         public MainForm()
         {
             InitializeComponent();
             Search_Click(null, null);
-            List<string> cities = MySelect("SELECT Name FROM cities ORDER BY Name");
+            List<string> cities = SQLClass.Select("SELECT Name FROM cities ORDER BY Name");
             CityComboBox.Items.Clear();
             CityComboBox.Items.Add("");
             foreach (string city in cities)
@@ -101,7 +68,7 @@ namespace Booking
                 command += " AND City = '" + CityComboBox.Text + "'";
             if (RatingComboBox.Text != "")
                 command += " AND Rating >= '" + RatingComboBox.Text + "'";
-            List<string> otels = MySelect(command);
+            List<string> otels = SQLClass.Select(command);
 
             int x = 40;
             for (int i = 0; i < otels.Count; i += 5)
@@ -142,7 +109,7 @@ namespace Booking
 
         private void AuthButton_Click(object sender, EventArgs e)
         {
-            List<string> user_data = MainForm.MySelect(
+            List<string> user_data = SQLClass.Select(
             "SELECT Login, Name, Surname, admin_id FROM users WHERE Login = '"+ LoginTextBox.Text +"' and Password = '"+ PaswTextBox.Text + "'");
 
             if (AuthButton.Text == "Выйти")

@@ -38,7 +38,7 @@ namespace Booking
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MainForm.MyUpdate("INSERT INTO hotels (Name, City, Rating, Image, Adress)"+
+            SQLClass.Update("INSERT INTO hotels (Name, City, Rating, Image, Adress)"+
                               "VALUES('"+ textBox1.Text +"', '"+ textBox2.Text + "', '"+ textBox3.Text + "', '"+ adress + "', '"+ textBox4.Text + "')");
             
             MessageBox.Show("Сохранено");
@@ -48,7 +48,7 @@ namespace Booking
 
         private void AdminHotelsForm_Load(object sender, EventArgs e)
         {
-            List<string> list = MainForm.MySelect("SELECT Name, City, Rating, Image, Adress, ID FROM hotels");
+            List<string> list = SQLClass.Select("SELECT Name, City, Rating, Image, Adress, ID FROM hotels");
 
             panel1.Controls.Clear();
             int y = 10;
@@ -89,7 +89,7 @@ namespace Booking
             {
                 if(control.Location == new Point(50, y))
                 {
-                    MainForm.MyUpdate("DELETE FROM hotels WHERE Name = '" + control.Text + "'");                    
+                    SQLClass.Update("DELETE FROM hotels WHERE Name = '" + control.Text + "'");                    
                     AdminHotelsForm_Load(sender, e);
                     return;
                 }

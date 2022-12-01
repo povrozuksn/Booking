@@ -20,7 +20,7 @@ namespace Booking
         {
             InitializeComponent();
             RoomsPanel.Controls.Clear();
-            List<string> otel = MainForm.MySelect("SELECT Name, City, Rating, Image, Adress, ID FROM hotels WHERE ID = '" + hotel_id + "'");
+            List<string> otel = SQLClass.Select("SELECT Name, City, Rating, Image, Adress, ID FROM hotels WHERE ID = '" + hotel_id + "'");
 
             Text = otel[0];
             label1.Text = otel[0];
@@ -57,10 +57,20 @@ namespace Booking
                 x += 43;
             }
             //Номера
-            List<string> rooms = MainForm.MySelect("SELECT Name, Price, Image, ID FROM rooms WHERE Hotel_id = '" + hotel_id + "'");
+            List<string> rooms = SQLClass.Select("SELECT Name, Price, Image, ID, quantity FROM rooms WHERE Hotel_id = '" + hotel_id + "'");
             x = 40;
-            for (int i = 0; i < rooms.Count; i += 4)
+            for (int i = 0; i < rooms.Count; i += 5)
             {
+
+                Label lbl = new Label();
+                lbl.Location = new Point(x, 10);
+                lbl.Size = new Size(250, 30);
+                lbl.Font = new Font("Microsoft Sans Serif", 12);
+                lbl.Text = rooms[i];
+                lbl.Tag = rooms[i + 3];
+                lbl.Click += new EventHandler(label3_Click);
+                RoomsPanel.Controls.Add(lbl);
+
                 PictureBox pb = new PictureBox();
                 pb = new PictureBox();
                 try
@@ -68,21 +78,28 @@ namespace Booking
                     pb.Load("../../Pictures/" + rooms[i + 2]);
                 }
                 catch (Exception) { }
-                pb.Location = new Point(x, 20);
+                pb.Location = new Point(x, 30);
                 pb.Size = new Size(250, 180);
                 pb.SizeMode = PictureBoxSizeMode.Zoom;
                 pb.Tag = rooms[i + 3];
                 pb.Click += new EventHandler(pictureBox6_Click);
                 RoomsPanel.Controls.Add(pb);
+                
+                TextBox tb = new TextBox();
+                tb.Location = new Point(x, 210);
+                tb.Size = new Size(100, 40);
+                tb.Font = new Font("Microsoft Sans Serif", 12);
+                tb.Text = rooms[i + 1] + " руб.";
+                tb.Tag = rooms[i + 3];
+                RoomsPanel.Controls.Add(tb);
 
-                Label lbl = new Label();
-                lbl.Location = new Point(x, 200);
-                lbl.Size = new Size(250, 30);
-                lbl.Font = new Font("Microsoft Sans Serif", 12);
-                lbl.Text = rooms[i];
-                lbl.Tag = rooms[i + 3];
-                lbl.Click += new EventHandler(label3_Click);
-                RoomsPanel.Controls.Add(lbl);
+                TextBox tb1 = new TextBox();
+                tb1.Location = new Point(x+150, 210);
+                tb1.Size = new Size(100, 40);
+                tb1.Font = new Font("Microsoft Sans Serif", 12);
+                tb1.Text = rooms[i + 4] + " шт.";
+                tb1.Tag = rooms[i + 3];
+                RoomsPanel.Controls.Add(tb1);
 
                 x += 260;
             }
@@ -108,8 +125,8 @@ namespace Booking
         }
 
         private void OpinionButton_Click(object sender, EventArgs e)
-        {            
-            MainForm.MyUpdate("INSERT INTO rating (User, Hotel_id, Rate, Comments)" +
+        {
+            SQLClass.Update("INSERT INTO rating (User, Hotel_id, Rate, Comments)" +
                               "VALUES('" + MainForm.Login + "', '" + hotelid + "', '" + numericUpDown1.Value.ToString() + "', '" + textBox1.Text + "')");
 
             MessageBox.Show("Спасибо");

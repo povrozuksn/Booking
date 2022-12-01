@@ -15,7 +15,7 @@ namespace Booking
         public RegForm()
         {
             InitializeComponent();
-            List<string> cities = MainForm.MySelect("SELECT Name FROM cities ORDER BY Name");
+            List<string> cities = SQLClass.Select("SELECT Name FROM cities ORDER BY Name");
             CityComboBox.Items.Clear();
             CityComboBox.Items.Add("");
             foreach (string city in cities)
@@ -24,7 +24,7 @@ namespace Booking
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MainForm.MyUpdate("INSERT INTO users (Name, Surname, City, Age, Login, Password, Email)" +
+            SQLClass.Update("INSERT INTO users (Name, Surname, City, Age, Login, Password, Email)" +
                               "VALUES('" + NameTextBox.Text + "', '" + SurnameTextBox.Text + "', '" + CityComboBox.Text + "', '" + AgeTextBox.Text + "', '" + LoginTextBox.Text + "', '" + PasTextBox.Text + "', '" + EmailTextBox.Text + "')");
 
             MessageBox.Show("Сохранено");

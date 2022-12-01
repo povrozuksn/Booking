@@ -16,7 +16,7 @@ namespace Booking
         {
             InitializeComponent();
             FindButton_Click(null, null);
-            List<string> cities = MainForm.MySelect("SELECT Name FROM cities ORDER BY Name");
+            List<string> cities = SQLClass.Select("SELECT Name FROM cities ORDER BY Name");
             CityComboBox.Items.Clear();
             CityComboBox.Items.Add("");
             foreach (string city in cities)
@@ -36,7 +36,7 @@ namespace Booking
             if (AgeTextBox.Text != "")
                 command += " AND Age >= '" + AgeTextBox.Text + "'";
             
-            List<string> user_data = MainForm.MySelect(command);
+            List<string> user_data = SQLClass.Select(command);
 
             UsersPanel.Controls.Clear();
             int y = 10;
