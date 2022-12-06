@@ -15,6 +15,7 @@ namespace Booking
         public static int Rating;
         string id = "";
         int qty = 0;
+        int price;
 
         public RoomForm(string hotel_id, string room_id)
         {
@@ -26,19 +27,26 @@ namespace Booking
 
             Text = otel[0] + ": " + room[0];
             qty = Convert.ToInt32(room[4]);
+            price = Convert.ToInt32(room[1]);
             label1.Text = otel[0];
             label3.Text = room[0];
             label4.Text = otel[4];
             Rating = Convert.ToInt32(otel[2]);
+
+            PriceTextBox.Text = price.ToString();
+            QuantityTextBox.Text = qty.ToString();
+
+            PriceTextBox.Enabled = MainForm.isAdmin;
+            QuantityTextBox.Enabled = MainForm.isAdmin;
+            PriceTextBox.ReadOnly = !MainForm.isAdmin;
+            QuantityTextBox.ReadOnly = !MainForm.isAdmin;
+            SaveButton.Visible = MainForm.isAdmin;
 
             try
             {
                 pictureBox1.Load("../../Pictures/" + room[2]);
             }
             catch (Exception) { };
-
-            
-            
 
             int x = 360;
             for (int i = 0; i < Rating; i++)
@@ -52,6 +60,7 @@ namespace Booking
 
                 x += 55;
             }
+
 
         }       
 
@@ -96,6 +105,12 @@ namespace Booking
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            SQLClass.Update("UPDATE rooms SET Price='" + PriceTextBox.Text + "' , quantity='" + QuantityTextBox.Text + "' WHERE ID ='" + id + "'");
+            MessageBox.Show("Сохранено");
         }
     }
 }

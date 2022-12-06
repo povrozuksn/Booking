@@ -51,6 +51,7 @@ namespace Booking
             this.LoginTextBox = new System.Windows.Forms.TextBox();
             this.PaswTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.FiltrPanel.SuspendLayout();
             this.HotelsPanel.SuspendLayout();
             this.AuthPanel.SuspendLayout();
@@ -192,9 +193,10 @@ namespace Booking
             // HotelsPanel
             // 
             this.HotelsPanel.AutoScroll = true;
+            this.HotelsPanel.Controls.Add(this.button2);
             this.HotelsPanel.Controls.Add(this.label7);
             this.HotelsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.HotelsPanel.Location = new System.Drawing.Point(0, 251);
+            this.HotelsPanel.Location = new System.Drawing.Point(0, 248);
             this.HotelsPanel.Name = "HotelsPanel";
             this.HotelsPanel.Size = new System.Drawing.Size(1494, 427);
             this.HotelsPanel.TabIndex = 1;
@@ -294,11 +296,21 @@ namespace Booking
             this.label4.TabIndex = 9;
             this.label4.Text = "Введите логин";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(13, 376);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(37, 31);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "?";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_2);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1494, 678);
+            this.ClientSize = new System.Drawing.Size(1494, 675);
             this.Controls.Add(this.AuthPanel);
             this.Controls.Add(this.HotelsPanel);
             this.Controls.Add(this.FiltrPanel);
@@ -339,6 +351,7 @@ namespace Booking
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox RatingComboBox;
         private System.Windows.Forms.Button AccountButton;
+        private System.Windows.Forms.Button button2;
     }
 }
 

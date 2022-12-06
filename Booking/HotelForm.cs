@@ -85,22 +85,14 @@ namespace Booking
                 pb.Click += new EventHandler(pictureBox6_Click);
                 RoomsPanel.Controls.Add(pb);
                 
-                TextBox tb = new TextBox();
-                tb.Location = new Point(x, 210);
-                tb.Size = new Size(100, 40);
-                tb.Font = new Font("Microsoft Sans Serif", 12);
-                tb.Text = rooms[i + 1] + " руб.";
-                tb.Tag = rooms[i + 3];
-                RoomsPanel.Controls.Add(tb);
-
-                TextBox tb1 = new TextBox();
-                tb1.Location = new Point(x+150, 210);
-                tb1.Size = new Size(100, 40);
-                tb1.Font = new Font("Microsoft Sans Serif", 12);
-                tb1.Text = rooms[i + 4] + " шт.";
-                tb1.Tag = rooms[i + 3];
-                RoomsPanel.Controls.Add(tb1);
-
+                Label lb = new Label();
+                lb.Location = new Point(x, 210);
+                lb.Size = new Size(100, 40);
+                lb.Font = new Font("Microsoft Sans Serif", 12);
+                lb.Text = rooms[i + 1] + " руб.";
+                lb.Tag = rooms[i + 3];
+                RoomsPanel.Controls.Add(lb);
+                
                 x += 260;
             }
         }

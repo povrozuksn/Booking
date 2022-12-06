@@ -41,5 +41,10 @@ namespace Booking
             MessageBox.Show("Сохранено");
             Close();
         }
+
+        private void AccountForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

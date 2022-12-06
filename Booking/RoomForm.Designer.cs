@@ -41,6 +41,13 @@ namespace Booking
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.PriceTextBox = new System.Windows.Forms.TextBox();
+            this.QuantityTextBox = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.SaveButton = new System.Windows.Forms.Button();
             this.InfoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -112,7 +119,7 @@ namespace Booking
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(673, 315);
+            this.button1.Location = new System.Drawing.Point(650, 385);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(244, 78);
             this.button1.TabIndex = 2;
@@ -123,7 +130,7 @@ namespace Booking
             // dateTimePicker1
             // 
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(433, 315);
+            this.dateTimePicker1.Location = new System.Drawing.Point(410, 385);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(212, 30);
             this.dateTimePicker1.TabIndex = 3;
@@ -131,7 +138,7 @@ namespace Booking
             // dateTimePicker2
             // 
             this.dateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(433, 363);
+            this.dateTimePicker2.Location = new System.Drawing.Point(410, 433);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(212, 30);
             this.dateTimePicker2.TabIndex = 4;
@@ -140,7 +147,7 @@ namespace Booking
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(279, 320);
+            this.label5.Location = new System.Drawing.Point(256, 390);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(131, 25);
             this.label5.TabIndex = 5;
@@ -150,17 +157,96 @@ namespace Booking
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(276, 368);
+            this.label6.Location = new System.Drawing.Point(253, 438);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(134, 25);
             this.label6.TabIndex = 6;
             this.label6.Text = "Дата выезда";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(256, 333);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 25);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Цена";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.Location = new System.Drawing.Point(531, 333);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(123, 25);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "Количество";
+            // 
+            // PriceTextBox
+            // 
+            this.PriceTextBox.Enabled = false;
+            this.PriceTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PriceTextBox.Location = new System.Drawing.Point(335, 333);
+            this.PriceTextBox.Name = "PriceTextBox";
+            this.PriceTextBox.ReadOnly = true;
+            this.PriceTextBox.Size = new System.Drawing.Size(113, 30);
+            this.PriceTextBox.TabIndex = 11;
+            // 
+            // QuantityTextBox
+            // 
+            this.QuantityTextBox.Enabled = false;
+            this.QuantityTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.QuantityTextBox.Location = new System.Drawing.Point(660, 333);
+            this.QuantityTextBox.Name = "QuantityTextBox";
+            this.QuantityTextBox.ReadOnly = true;
+            this.QuantityTextBox.Size = new System.Drawing.Size(107, 30);
+            this.QuantityTextBox.TabIndex = 12;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.Location = new System.Drawing.Point(454, 333);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(48, 25);
+            this.label9.TabIndex = 13;
+            this.label9.Text = "руб.";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label10.Location = new System.Drawing.Point(773, 333);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(45, 25);
+            this.label10.TabIndex = 14;
+            this.label10.Text = "шт.";
+            // 
+            // SaveButton
+            // 
+            this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SaveButton.Location = new System.Drawing.Point(826, 333);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(135, 30);
+            this.SaveButton.TabIndex = 15;
+            this.SaveButton.Text = "Сохранить";
+            this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Visible = false;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // RoomForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1033, 500);
+            this.Controls.Add(this.SaveButton);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.QuantityTextBox);
+            this.Controls.Add(this.PriceTextBox);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dateTimePicker2);
@@ -191,5 +277,12 @@ namespace Booking
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox PriceTextBox;
+        private System.Windows.Forms.TextBox QuantityTextBox;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button SaveButton;
     }
 }

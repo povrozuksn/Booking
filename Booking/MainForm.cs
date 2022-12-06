@@ -15,6 +15,7 @@ namespace Booking
     {
         public static string Login = "";
         public static string NameSurname = "";
+        public static bool isAdmin = false;
 
         public MainForm()
         {
@@ -63,6 +64,9 @@ namespace Booking
         private void Search_Click(object sender, EventArgs e)
         {
             HotelsPanel.Controls.Clear();
+            HotelsPanel.Controls.Add(label7);
+            HotelsPanel.Controls.Add(button2);
+
             string command = "SELECT Name, City, Rating, Image, ID FROM hotels WHERE 1";
             if (CityComboBox.Text != "")
                 command += " AND City = '" + CityComboBox.Text + "'";
@@ -112,6 +116,7 @@ namespace Booking
             List<string> user_data = SQLClass.Select(
             "SELECT Login, Name, Surname, admin_id FROM users WHERE Login = '"+ LoginTextBox.Text +"' and Password = '"+ PaswTextBox.Text + "'");
 
+            isAdmin = (user_data[3] == "1");
             if (AuthButton.Text == "Выйти")
             {
                 Login = "";
@@ -137,8 +142,7 @@ namespace Booking
                     AuthPanel.Controls.Clear();
                     AuthButton.Text = "Выйти";
                     AuthPanel.Controls.Add(AuthButton);
-                    if(Convert.ToInt32(user_data[3]) == 1)
-                        AdminPanelButton.Visible = true;
+                    AdminPanelButton.Visible = isAdmin;
                     AuthPanel.Controls.Add(AccountButton);
                     AccountButton.Visible = true;
                     AuthPanel.Controls.Add(AdminPanelButton);
@@ -161,6 +165,12 @@ namespace Booking
         {
             AccountForm af = new AccountForm();
             af.ShowDialog();
+        }
+
+        private void button2_Click_2(object sender, EventArgs e)
+        {
+            HelpForm hf = new HelpForm();
+            hf.Show();
         }
     }
 }
