@@ -21,7 +21,7 @@ namespace Booking
         {
             InitializeComponent();
             Search_Click(null, null);
-            List<string> cities = SQLClass.Select("SELECT Name FROM cities ORDER BY Name");
+            List<string> cities = SQLClass.Select("SELECT Name1 FROM cities ORDER BY Name");
             CityComboBox.Items.Clear();
             CityComboBox.Items.Add("");
             foreach (string city in cities)
@@ -116,7 +116,6 @@ namespace Booking
             List<string> user_data = SQLClass.Select(
             "SELECT Login, Name, Surname, admin_id FROM users WHERE Login = '"+ LoginTextBox.Text +"' and Password = '"+ PaswTextBox.Text + "'");
 
-            isAdmin = (user_data[3] == "1");
             if (AuthButton.Text == "Выйти")
             {
                 Login = "";
@@ -137,6 +136,7 @@ namespace Booking
             {
                 if (user_data.Count > 0)
                 {
+                    isAdmin = (user_data[3] == "1");
                     Login = user_data[0];
                     NameSurname = user_data[1] + " " + user_data[2];
                     AuthPanel.Controls.Clear();
